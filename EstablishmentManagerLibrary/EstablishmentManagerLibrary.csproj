@@ -52,13 +52,13 @@
     <Compile Include="Client\Client.cs" />
     <Compile Include="Client\Client_address.cs" />
     <Compile Include="Client\Client_telephone.cs" />
-    <Compile Include="Database\Connection_string.cs" />
     <Compile Include="Database\CRUD\Insert.cs" />
     <Compile Include="Database\Database_setup.cs" />
     <Compile Include="Database\CRUD\Delete.cs" />
     <Compile Include="Database\CRUD\Edit.cs" />
-    <Compile Include="Database\Query.cs" />
+    <Compile Include="Database\QueryFunction.cs" />
     <Compile Include="Database\CRUD\Select.cs" />
+    <Compile Include="Database\Database_query_strings.cs" />
     <Compile Include="Inventory\Group_of_product.cs" />
     <Compile Include="Inventory\Product.cs" />
     <Compile Include="Inventory\Product_addons.cs" />

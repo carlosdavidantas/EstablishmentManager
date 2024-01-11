@@ -11,7 +11,7 @@ namespace EstablishmentManagerLibrary.Database.CRUD
                 $" [credit_on_establishment] = '{client.Credit_on_establishment}', [debit_on_establishment] = '{client.Debit_on_establishment}'" +
                 $" where [id] = '{id}';";
 
-            Query.Execute(queryString, Connection_string.String);
+            QueryFunction.Execute(queryString, Database_query_strings.Establishment_connection_string);
         }
     }
 }

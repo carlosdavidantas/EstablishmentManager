@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace EstablishmentManagerLibrary.Database
 {
-    internal static class Query
+    internal static class QueryFunction
     {
         internal static void Execute(string queryString, string stringConnection)
         {

@@ -5,7 +5,7 @@
         public static void Client(string id)
         {
             string queryString = $"delete from [Client] where [id] = '{id}';";
-            Query.Execute(queryString, Connection_string.String);
+            QueryFunction.Execute(queryString, Database_query_strings.Establishment_connection_string);
         }
     }
 }

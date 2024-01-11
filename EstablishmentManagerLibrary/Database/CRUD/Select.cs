@@ -8,14 +8,14 @@ namespace EstablishmentManagerLibrary.Database.CRUD
     {
         
         public static Client Client(string id)
-        {            
-            string searchQuery = $"select * from [Client] where [id] = '{id}'";
+        {
+            string query = $"select * from [Client] where [id] = '{id}';";
             Client client = new Client();
 
-            using (SqlConnection connectionString = new SqlConnection(Connection_string.String))
-            using (SqlCommand myCommand = new SqlCommand(searchQuery, connectionString))
+            using (SqlConnection connection = new SqlConnection(Database_query_strings.Establishment_connection_string))
+            using (SqlCommand myCommand = new SqlCommand(query, connection))
             {
-                connectionString.Open();
+                connection.Open();
                 using (SqlDataReader reader = myCommand.ExecuteReader())
                 {
                     try

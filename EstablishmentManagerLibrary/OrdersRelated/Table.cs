@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EstablishmentManagerLibrary.OrdersRelated
 {
     internal class Table
     {
-        private int _id;
-        private int _id_orders;
+        private string _id;
+        private string _id_orders;
         private string _name;
-        private DateTime _date;
-        private DateTime _time;
+        private DateTime _usage_date;
+        private DateTime _initial_time;
+        private DateTime _time_spent;
 
-        public int Id { get => _id; set => _id = value; }
-        public int Id_orders { get => _id_orders; set => _id_orders = value; }
+        public string Id { get => _id; set => _id = value; }
+        public string Id_orders { get => _id_orders; set => _id_orders = value; }
         public string Name { get => _name; set => _name = value; }
-        public DateTime Time { get => _time; set => _time = value; }
-        internal DateTime Date { get => _date; set => _date = value; }
+        public DateTime Usage_date { get => _usage_date; set => _usage_date = value; }
+        public DateTime Initial_time { get => _initial_time; set => _initial_time = value; }
+        public DateTime Time_spent { get => _time_spent; set => _time_spent = value; }
     }
 }

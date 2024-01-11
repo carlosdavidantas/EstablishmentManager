@@ -1,10 +1,6 @@
-﻿using EstablishmentManagerLibrary.Client_related;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EstablishmentManagerLibrary.Client_related;
 
 namespace EstablishmentManagerLibrary.Database.CRUD
 {
@@ -26,12 +22,15 @@ namespace EstablishmentManagerLibrary.Database.CRUD
                     {
                         while (reader.Read())
                         {
-                            client.Id = int.Parse(reader[0].ToString());
+                            client.Id = reader[0].ToString();
                             client.Name = reader[1].ToString();
                             client.Cpf = reader[2].ToString();
                             client.Birthday = DateTime.Parse(reader[3].ToString());
                             client.Rg = reader[4].ToString();
-                            client.Creation_Date = DateTime.Parse(reader[5].ToString());
+                            client.Creation_date = DateTime.Parse(reader[5].ToString());
+                            client.Modified_date = DateTime.Parse(reader[6].ToString());
+                            client.Credit_on_establishment = decimal.Parse(reader[7].ToString());
+                            client.Debit_on_establishment = decimal.Parse(reader[8].ToString());
                         }
                         Console.WriteLine("Query executed successfully!");
                     }

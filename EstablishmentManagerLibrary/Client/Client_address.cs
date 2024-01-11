@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EstablishmentManagerLibrary.Client
+namespace EstablishmentManagerLibrary.Client_related
 {
     internal class Client_address
     {

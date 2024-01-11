@@ -2,7 +2,7 @@
 
 namespace EstablishmentManagerLibrary.User
 {
-    internal class Employee
+    public class Employee
     {
         private string _id;
         private string _id_user;

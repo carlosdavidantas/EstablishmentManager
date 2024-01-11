@@ -1,6 +1,6 @@
 ﻿namespace EstablishmentManagerLibrary.MoneyRelated
 {
-    internal class Payment_value
+    public class Payment_value
     {
         private string _id;
         private string _id_payment_method;

@@ -2,7 +2,7 @@
 
 namespace EstablishmentManagerLibrary.OrdersRelated
 {
-    internal class Table
+    public class Table
     {
         private string _id;
         private string _id_orders;

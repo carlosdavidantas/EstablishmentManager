@@ -6,7 +6,7 @@ var app = builder.Build();
 
 app.MapGet("/", () =>
 {
-    return Select.Client("1");
+    
 });
 
 app.Run();

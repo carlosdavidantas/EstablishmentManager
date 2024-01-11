@@ -2,7 +2,7 @@
 
 namespace EstablishmentManagerLibrary.Inventory
 {
-    internal class Product_addons
+    public class Product_addons
     {
         private string _id;
         private string _name;

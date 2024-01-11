@@ -2,7 +2,7 @@
 
 namespace EstablishmentManagerLibrary.Client_related
 {
-    internal class Client_address
+    public class Client_address
     {
         private string _id;
         private string _street_name;

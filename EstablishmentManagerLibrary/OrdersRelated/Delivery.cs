@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstablishmentManagerLibrary.OrdersRelated
 {
-    internal class Delivery
+    public class Delivery
     {
         private string _id;
         private string _id_deliveryman_employee;

@@ -1,6 +1,6 @@
 ﻿namespace EstablishmentManagerLibrary.OrdersRelated
 {
-    internal class Order
+    public class Order
     {
         private string _id;
         private string _id_type;

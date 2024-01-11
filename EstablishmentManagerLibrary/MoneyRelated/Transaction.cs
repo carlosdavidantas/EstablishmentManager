@@ -2,7 +2,7 @@
 
 namespace EstablishmentManagerLibrary.MoneyRelated
 {
-    internal class Transaction
+    public class Transaction
     {
         private string _id;
         private string _id_payment_method;

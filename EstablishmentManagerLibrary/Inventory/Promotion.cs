@@ -2,7 +2,7 @@
 
 namespace EstablishmentManagerLibrary.Inventory
 {
-    internal class Promotion
+    public class Promotion
     {
         private string _id;
         private string _id_product;

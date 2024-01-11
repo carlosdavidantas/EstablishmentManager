@@ -11,12 +11,12 @@ namespace EstablishmentManagerLibrary.Client_related
         private string _rg;
         private DateTime _creation_date;
         private DateTime _modified_date;
-        private decimal credit_on_establishment;
-        private decimal debit_on_establishment;
+        private decimal _credit_on_establishment;
+        private decimal _debit_on_establishment;
 
         public Client() { }
 
-        public Client(string name, string cpf, DateTime birthday, string rg, DateTime creation_date)
+        public Client(string name, string cpf, DateTime birthday, string rg, DateTime creation_date, decimal credit_on_establishment, decimal debit_on_establishment)
         {
             Name = name;
             Cpf = cpf;
@@ -34,8 +34,8 @@ namespace EstablishmentManagerLibrary.Client_related
         public string Rg { get => _rg; set => _rg = value; }
         public DateTime Creation_date { get => _creation_date; set => _creation_date = value; }
         public DateTime Modified_date { get => _modified_date; set => _modified_date = value; }
-        public decimal Credit_on_establishment { get => credit_on_establishment; set => credit_on_establishment = value; }
-        public decimal Debit_on_establishment { get => debit_on_establishment; set => debit_on_establishment = value; }
+        public decimal Credit_on_establishment { get => _credit_on_establishment; set => _credit_on_establishment = value; }
+        public decimal Debit_on_establishment { get => _debit_on_establishment; set => _debit_on_establishment = value; }
     }
 
 }

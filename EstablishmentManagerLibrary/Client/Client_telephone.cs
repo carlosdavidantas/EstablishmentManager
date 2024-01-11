@@ -2,7 +2,7 @@
 
 namespace EstablishmentManagerLibrary.Client_related
 {
-    internal class Client_telephone
+    public class Client_telephone
     {
         private string _id;
         private string _number;

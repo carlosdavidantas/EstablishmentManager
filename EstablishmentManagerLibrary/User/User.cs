@@ -1,6 +1,6 @@
 ﻿namespace EstablishmentManagerLibrary.User
 {
-    internal class User
+    public class User
     {
         private string _id;
         private string _id_permission;

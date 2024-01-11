@@ -6,11 +6,10 @@ namespace EstablishmentManagerLibrary.Database.CRUD
 {
     public  class Select
     {
-        
-        public static Client Client(string id)
+        //This method translate the client info from the database to the Client class.
+        private static Client ClientMethod(string query)
         {
-            string query = $"select * from [Client] where [id] = '{id}';";
-            Client client = new Client();
+            Client ClientFound = new Client();
 
             using (SqlConnection connection = new SqlConnection(Database_query_strings.Establishment_connection_string))
             using (SqlCommand myCommand = new SqlCommand(query, connection))
@@ -22,30 +21,44 @@ namespace EstablishmentManagerLibrary.Database.CRUD
                     {
                         while (reader.Read())
                         {
-                            client.Id = reader[0].ToString();
-                            client.Name = reader[1].ToString();
-                            client.Cpf = reader[2].ToString();
-                            client.Birthday = DateTime.Parse(reader[3].ToString());
-                            client.Rg = reader[4].ToString();
-                            client.Creation_date = DateTime.Parse(reader[5].ToString());
-                            client.Modified_date = DateTime.Parse(reader[6].ToString());
-                            client.Credit_on_establishment = decimal.Parse(reader[7].ToString());
-                            client.Debit_on_establishment = decimal.Parse(reader[8].ToString());
+                            ClientFound.Id = reader[0].ToString();
+                            ClientFound.Name = reader[1].ToString();
+                            ClientFound.Cpf = reader[2].ToString();
+                            ClientFound.Birthday = DateTime.Parse(reader[3].ToString());
+                            ClientFound.Rg = reader[4].ToString();
+                            ClientFound.Creation_date = DateTime.Parse(reader[5].ToString());
+                            ClientFound.Modified_date = DateTime.Parse(reader[6].ToString());
+                            ClientFound.Credit_on_establishment = decimal.Parse(reader[7].ToString());
+                            ClientFound.Debit_on_establishment = decimal.Parse(reader[8].ToString());
                         }
                         Console.WriteLine("Query executed successfully!");
                     }
-                    catch (Exception EX)
+                    catch (Exception ex)
                     {
-                        Console.WriteLine(EX);
+                        Console.WriteLine(ex);
                     }
-                    if (client.Name == null)
+                    if (ClientFound.Name == null)
                     {
                         return null;
                     }
-                    return client;
+                    return ClientFound;
                 }
             }
-            
+        }
+
+        public static Client Client(string id)
+        {
+            string query = $"select * from [Client] where [id] = '{id}';";
+            return ClientMethod(query);
+        }
+        
+        public static Client Client(Client client)
+        {
+            string query = $"select * from [Client] where [name] = '{client.Name}' and [cpf] = '{client.Cpf}' and [birthday] = '{client.Birthday}' and" +
+                $" [rg] = '{client.Rg}' and [modified_date] = '{client.Modified_date}' and [creation_date] = '{client.Creation_date}' and" +
+                $" [credit_on_establishment] = '{client.Credit_on_establishment}' and [debit_on_establishment] = '{client.Debit_on_establishment}';";
+            return ClientMethod(query);
+
         }
 
     }

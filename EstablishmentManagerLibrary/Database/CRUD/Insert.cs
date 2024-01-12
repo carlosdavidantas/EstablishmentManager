@@ -35,7 +35,7 @@ namespace EstablishmentManagerLibrary.Database.CRUD
             QueryFunction.Execute(query, Database_query_strings.Establishment_connection_string);
         }
 
-        //Intentory
+        //Inventory
         public static void Group_Of_Product(Group_of_product group_of_product)
         {
             string query = $"insert into [group_of_product] " +

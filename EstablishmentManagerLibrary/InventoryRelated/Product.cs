@@ -12,6 +12,21 @@ namespace EstablishmentManagerLibrary.InventoryRelated
         private decimal _sell_price;
         private DateTime _created;
 
+        public Product()
+        {
+            
+        }
+
+        public Product(string name, string description, string category, decimal cost_price, decimal sell_price)
+        {
+            Name = name;
+            Description = description;
+            Category = category;
+            Cost_price = cost_price;
+            Sell_price = sell_price;
+            Created = DateTime.Now;
+        }
+
         public string Id { get => _id; set => _id = value; }
         public string Name { get => _name; set => _name = value; }
         public string Description { get => _description; set => _description = value; }

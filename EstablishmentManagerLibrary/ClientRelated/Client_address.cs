@@ -14,6 +14,23 @@ namespace EstablishmentManagerLibrary.ClientRelated
         private DateTime _creation_date;
         private DateTime _modified_date;
 
+        public Client_address()
+        {
+            
+        }
+
+        public Client_address(string street_name, string cep, string complement, string reference, string number, string description)
+        {
+            Street_name = street_name;
+            Cep = cep;
+            Complement = complement;
+            Reference = reference;
+            Number = number;
+            Description = description;
+            Creation_date = DateTime.Now;
+            Modified_date = DateTime.Now;
+        }
+
         public string Id { get => _id; set => _id = value; }
         public string Street_name { get => _street_name; set => _street_name = value; }
         public string Cep { get => _cep; set => _cep = value; }

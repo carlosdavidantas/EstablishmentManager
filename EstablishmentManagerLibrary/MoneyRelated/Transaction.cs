@@ -10,6 +10,19 @@ namespace EstablishmentManagerLibrary.MoneyRelated
         private DateTime _date;
         private DateTime _hour;
 
+        public Transaction()
+        {
+            
+        }
+
+        public Transaction(string id_payment_method, string id_order, DateTime date, DateTime hour)
+        {
+            Id_payment_method = id_payment_method;
+            Id_order = id_order;
+            Date = date;
+            Hour = hour;
+        }
+
         public string Id { get => _id; set => _id = value; }
         public string Id_payment_method { get => _id_payment_method; set => _id_payment_method = value; }
         public string Id_order { get => _id_order; set => _id_order = value; }

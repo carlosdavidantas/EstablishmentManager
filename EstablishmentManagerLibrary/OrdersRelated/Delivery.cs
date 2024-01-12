@@ -14,6 +14,23 @@ namespace EstablishmentManagerLibrary.OrdersRelated
         private DateTime _time_deliveryman_arrived;
         private DateTime _schedule_date;
 
+        public Delivery()
+        {
+            
+        }
+
+        public Delivery(string id_deliveryman_employee, string id_orders, string id_client, string tax_value, 
+            DateTime time_deliveryman_arrived)
+        {
+            Id_deliveryman_employee = id_deliveryman_employee;
+            Id_orders = id_orders;
+            Id_client = id_client;
+            Tax_value = tax_value;
+            Creation_date = DateTime.Now;
+            Creation_time = DateTime.Now;
+            _time_deliveryman_arrived = time_deliveryman_arrived;
+        }
+
         public string Id { get => _id; set => _id = value; }
         public string Id_deliveryman_employee { get => _id_deliveryman_employee; set => _id_deliveryman_employee = value; }
         public string Id_orders { get => _id_orders; set => _id_orders = value; }

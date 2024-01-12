@@ -11,6 +11,19 @@ namespace EstablishmentManagerLibrary.OrdersRelated
         private DateTime _initial_time;
         private DateTime _time_spent;
 
+        public Table()
+        {
+            
+        }
+
+        public Table(string id_orders, string name, DateTime initial_time)
+        {
+            Id_orders = id_orders;
+            Name = name;
+            Usage_date = DateTime.Now;
+            Initial_time = initial_time;
+        }
+
         public string Id { get => _id; set => _id = value; }
         public string Id_orders { get => _id_orders; set => _id_orders = value; }
         public string Name { get => _name; set => _name = value; }

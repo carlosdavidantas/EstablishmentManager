@@ -13,6 +13,22 @@ namespace EstablishmentManagerLibrary.InventoryRelated
         private string category;
         private DateTime _created;
 
+        public Promotion()
+        {
+            
+        }
+
+        public Promotion(string id_product, string id_group_od_product, string name, string description, decimal sell_price, string category)
+        {
+            Id_product = id_product;
+            Id_group_od_product = id_group_od_product;
+            Name = name;
+            Description = description;
+            Sell_price = sell_price;
+            Category = category;
+            Created = DateTime.Now;
+        }
+
         public string Id { get => _id; set => _id = value; }
         public string Id_product { get => _id_product; set => _id_product = value; }
         public string Id_group_od_product { get => _id_group_od_product; set => _id_group_od_product = value; }

@@ -22,8 +22,8 @@ namespace EstablishmentManagerLibrary.ClientRelated
             Cpf = cpf;
             Birthday = birthday;
             Rg = rg;
-            Creation_date = DateTime.Today;
-            Modified_date = DateTime.Today;
+            Creation_date = DateTime.Now;
+            Modified_date = DateTime.Now;
             Credit_on_establishment = credit_on_establishment;
             Debit_on_establishment = debit_on_establishment;
         }

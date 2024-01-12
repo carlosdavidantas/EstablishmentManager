@@ -7,6 +7,18 @@
         private string _login;
         private string _password;
 
+        public User()
+        {
+            
+        }
+
+        public User(string id_permission, string login, string password)
+        {
+            Id_permission = id_permission;
+            Login = login;
+            Password = password;
+        }
+
         public string Id { get => _id; set => _id = value; }
         public string Id_permission { get => _id_permission; set => _id_permission = value; }
         public string Login { get => _login; set => _login = value; }

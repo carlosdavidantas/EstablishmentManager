@@ -1,4 +1,4 @@
-﻿namespace EstablishmentManagerLibrary.User
+﻿namespace EstablishmentManagerLibrary.UserRelated
 {
     public class User
     {

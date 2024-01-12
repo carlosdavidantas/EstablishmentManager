@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EstablishmentManagerLibrary.Client_related
+namespace EstablishmentManagerLibrary.ClientRelated
 {
     public class Client
     {
@@ -16,13 +16,14 @@ namespace EstablishmentManagerLibrary.Client_related
 
         public Client() { }
 
-        public Client(string name, string cpf, DateTime birthday, string rg, DateTime creation_date, decimal credit_on_establishment, decimal debit_on_establishment)
+        public Client(string name, string cpf, DateTime birthday, string rg, decimal credit_on_establishment, decimal debit_on_establishment)
         {
             Name = name;
             Cpf = cpf;
             Birthday = birthday;
             Rg = rg;
-            Creation_date = creation_date;
+            Creation_date = DateTime.Today;
+            Modified_date = DateTime.Today;
             Credit_on_establishment = credit_on_establishment;
             Debit_on_establishment = debit_on_establishment;
         }

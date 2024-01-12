@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EstablishmentManagerLibrary.OrdersRelated
 {
@@ -15,7 +11,7 @@ namespace EstablishmentManagerLibrary.OrdersRelated
         private string _tax_value;
         private DateTime _creation_date;
         private DateTime _creation_time;
-        private DateTime _time_delivery_man_arrived;
+        private DateTime _time_deliveryman_arrived;
         private DateTime _schedule_date;
 
         public string Id { get => _id; set => _id = value; }
@@ -25,7 +21,7 @@ namespace EstablishmentManagerLibrary.OrdersRelated
         public string Tax_value { get => _tax_value; set => _tax_value = value; }
         public DateTime Creation_date { get => _creation_date; set => _creation_date = value; }
         public DateTime Creation_time { get => _creation_time; set => _creation_time = value; }
-        public DateTime Time_delivery_man_arrived { get => _time_delivery_man_arrived; set => _time_delivery_man_arrived = value; }
+        public DateTime Time_deliveryman_arrived { get => _time_deliveryman_arrived; set => _time_deliveryman_arrived = value; }
         public DateTime Schedule_date { get => _schedule_date; set => _schedule_date = value; }
     }
 }

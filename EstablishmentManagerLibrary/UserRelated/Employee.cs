@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EstablishmentManagerLibrary.User
+namespace EstablishmentManagerLibrary.UserRelated
 {
     public class Employee
     {

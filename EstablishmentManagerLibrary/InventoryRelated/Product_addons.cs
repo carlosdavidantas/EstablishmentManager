@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace EstablishmentManagerLibrary.Inventory
+namespace EstablishmentManagerLibrary.InventoryRelated
 {
-    public class Group_of_product
+    public class Product_addons
     {
         private string _id;
         private string _name;

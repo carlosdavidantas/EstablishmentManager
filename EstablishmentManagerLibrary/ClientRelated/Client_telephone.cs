@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EstablishmentManagerLibrary.Client_related
+namespace EstablishmentManagerLibrary.ClientRelated
 {
     public class Client_telephone
     {

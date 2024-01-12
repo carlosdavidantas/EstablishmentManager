@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
-using EstablishmentManagerLibrary.Client_related;
+using EstablishmentManagerLibrary.ClientRelated;
 
 namespace EstablishmentManagerLibrary.Database.CRUD
 {
@@ -48,13 +48,13 @@ namespace EstablishmentManagerLibrary.Database.CRUD
 
         public static Client Client(string id)
         {
-            string query = $"select * from [Client] where [id] = '{id}';";
+            string query = $"select * from [client] where [id] = '{id}';";
             return ClientMethod(query);
         }
         
         public static Client Client(Client client)
         {
-            string query = $"select * from [Client] where [name] = '{client.Name}' and [cpf] = '{client.Cpf}' and [birthday] = '{client.Birthday}' and" +
+            string query = $"select * from [client] where [name] = '{client.Name}' and [cpf] = '{client.Cpf}' and [birthday] = '{client.Birthday}' and" +
                 $" [rg] = '{client.Rg}' and [modified_date] = '{client.Modified_date}' and [creation_date] = '{client.Creation_date}' and" +
                 $" [credit_on_establishment] = '{client.Credit_on_establishment}' and [debit_on_establishment] = '{client.Debit_on_establishment}';";
             return ClientMethod(query);

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EstablishmentManagerLibrary.Inventory
+namespace EstablishmentManagerLibrary.InventoryRelated
 {
     public class Stock
     {

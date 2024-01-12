@@ -1,4 +1,4 @@
-﻿using EstablishmentManagerLibrary.Client_related;
+﻿using EstablishmentManagerLibrary.ClientRelated;
 
 namespace EstablishmentManagerLibrary.Database.CRUD
 {

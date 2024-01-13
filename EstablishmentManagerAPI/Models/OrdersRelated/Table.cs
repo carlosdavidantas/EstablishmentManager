@@ -11,10 +11,8 @@
         public ICollection<Order> Orders { get; set; }
 
 
-        public Table()
-        {
-            
-        }
+        public Table() { }
+        
 
         public Table(string name, DateTime initial_time)
         {

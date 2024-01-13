@@ -13,10 +13,8 @@
 
         public ICollection<Order> Orders { get; set; }
 
-        public Delivery()
-        {
-            
-        }
+        public Delivery() { }
+        
 
         public Delivery(int id_deliveryman_employee, int id_client, decimal tax_value, 
             DateTime time_deliveryman_arrived)

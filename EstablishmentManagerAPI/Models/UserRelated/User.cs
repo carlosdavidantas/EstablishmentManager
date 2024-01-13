@@ -9,10 +9,8 @@
 
         public ICollection<Permission> Permissions { get; set; }
 
-        public User()
-        {
-            
-        }
+        public User() { }
+        
 
         public User(int id_permission, string login, string password)
         {

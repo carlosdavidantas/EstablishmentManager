@@ -7,10 +7,8 @@
         private int _quantity;
         private DateTime _added_to_stock;
 
-        public Stock()
-        {
-            
-        }
+        public Stock() { }
+        
 
         public Stock(int id_product, int quantity, DateTime added_to_stock)
         {

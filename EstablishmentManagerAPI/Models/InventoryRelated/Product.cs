@@ -23,10 +23,8 @@
         public Promotion Promotion { get; set; }
 
 
-        public Product()
-        {
-            
-        }
+        public Product() { }
+        
 
         public Product(string name, string description, string category, decimal cost_price, decimal sell_price)
         {

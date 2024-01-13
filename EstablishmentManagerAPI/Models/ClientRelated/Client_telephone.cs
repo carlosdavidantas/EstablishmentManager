@@ -13,10 +13,8 @@
         public Client Client { get; set; }
 
 
-        public Client_telephone()
-        {
-            
-        }
+        public Client_telephone() { }
+        
 
         public Client_telephone(string number, string description)
         {

@@ -13,10 +13,8 @@
         public ICollection<Group_of_product> Group_of_products { get; set; }
 
 
-        public Promotion()
-        {
-            
-        }
+        public Promotion() { }
+        
 
         public Promotion(string name, string description, decimal sell_price, string category)
         {

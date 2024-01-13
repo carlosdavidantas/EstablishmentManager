@@ -9,10 +9,8 @@
         private string _cpf;
         private DateTime _created;
 
-        public Employee()
-        {
-            
-        }
+        public Employee() { }
+        
 
         public Employee(int id_user, DateTime birthday, string name, string cpf)
         {

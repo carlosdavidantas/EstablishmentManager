@@ -10,10 +10,8 @@
         public User User { get; set; }
 
 
-        public Permission()
-        {
-            
-        }
+        public Permission() { }
+        
 
         public Permission(int level)
         {

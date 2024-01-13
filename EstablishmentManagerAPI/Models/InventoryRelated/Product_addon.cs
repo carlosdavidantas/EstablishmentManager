@@ -14,10 +14,8 @@
         public int ProductId { get; set; }
         public Product Product { get; set; }
 
-        public Product_addon()
-        {
-            
-        }
+        public Product_addon() { }
+       
 
         public Product_addon(string name, string description, string category, decimal cost_price, decimal sell_price)
         {

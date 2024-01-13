@@ -20,10 +20,8 @@ namespace Models.OrdersRelated
         public int Table_id { get; set; }
         public Table Table { get; set; }
 
-        public Order()
-        {
-            
-        }
+        public Order() { }
+        
 
         public Order(int id_table, int id_delivery, string client_name_note, string observation)
         {

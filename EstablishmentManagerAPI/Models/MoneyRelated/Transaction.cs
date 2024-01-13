@@ -9,10 +9,8 @@
         public ICollection<Payment> Payment { get; set; }
 
 
-        public Transaction()
-        {
-            
-        }
+        public Transaction() { }
+
 
         public Transaction(DateTime date, DateTime hour)
         {

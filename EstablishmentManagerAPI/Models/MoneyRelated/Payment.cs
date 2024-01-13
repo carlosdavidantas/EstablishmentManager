@@ -18,10 +18,8 @@ namespace Models.MoneyRelated
         public virtual Order Order { get; set; }
 
 
-        public Payment()
-        {
-            
-        }
+        public Payment() { }
+        
 
         public Payment(string payment_type, string payment_info, decimal value)
         {

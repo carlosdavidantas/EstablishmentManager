@@ -17,10 +17,8 @@
         public Client Client { get; set; }
 
 
-        public Client_address()
-        {
-            
-        }
+        public Client_address() { }
+        
 
         public Client_address(string street_name, string cep, string complement, string reference, 
             string number, string description)

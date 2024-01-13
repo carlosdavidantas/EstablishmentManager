@@ -17,11 +17,9 @@
         public Promotion Promotion { get; set; }
 
 
-        public Group_of_product()
-        {
-            
-        }
-
+        public Group_of_product() { }
+        
+        
         public Group_of_product(string name, string description, string category, decimal cost_price, decimal sell_price)
         {
             Name = name;

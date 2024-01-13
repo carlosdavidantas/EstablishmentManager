@@ -1,8 +1,8 @@
-﻿using EstablishmentManagerLibrary.Models.ClientRelated;
-using EstablishmentManagerLibrary.Models.InventoryRelated;
-using EstablishmentManagerLibrary.Models.MoneyRelated;
-using EstablishmentManagerLibrary.Models.OrdersRelated;
-using EstablishmentManagerLibrary.Models.UserRelated;
+﻿using Models.ClientRelated;
+using Models.InventoryRelated;
+using Models.MoneyRelated;
+using Models.OrdersRelated;
+using Models.UserRelated;
 using Microsoft.EntityFrameworkCore;
 
 namespace EstablishmentManagerAPI.Data

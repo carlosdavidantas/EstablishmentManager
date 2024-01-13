@@ -1,6 +1,6 @@
 ﻿using Models.OrdersRelated;
 
-namespace EstablishmentManagerLibrary.Models.MoneyRelated
+namespace Models.MoneyRelated
 {
     public class Payment
     {

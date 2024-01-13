@@ -1,4 +1,4 @@
-﻿namespace EstablishmentManagerLibrary.Models.MoneyRelated
+﻿namespace Models.MoneyRelated
 {
     public class Transaction
     {

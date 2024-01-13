@@ -1,4 +1,4 @@
-﻿namespace EstablishmentManagerLibrary.Models.OrdersRelated
+﻿namespace Models.OrdersRelated
 {
     public class Table
     {

@@ -1,4 +1,4 @@
-﻿namespace EstablishmentManagerLibrary.Models.InventoryRelated
+﻿namespace Models.InventoryRelated
 {
     public class Product_observation
     {

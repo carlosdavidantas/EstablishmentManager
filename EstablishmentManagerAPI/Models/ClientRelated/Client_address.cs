@@ -1,4 +1,4 @@
-﻿namespace EstablishmentManagerLibrary.Models.ClientRelated
+﻿namespace Models.ClientRelated
 {
     public class Client_address
     {

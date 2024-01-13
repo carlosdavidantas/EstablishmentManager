@@ -1,4 +1,4 @@
-﻿using EstablishmentManagerLibrary.Models.MoneyRelated;
+﻿using Models.MoneyRelated;
 
 namespace EstablishmentManagerLibrary.Models.OrdersRelated
 {

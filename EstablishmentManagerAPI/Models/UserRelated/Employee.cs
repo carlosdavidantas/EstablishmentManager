@@ -1,4 +1,4 @@
-﻿namespace EstablishmentManagerLibrary.Models.UserRelated
+﻿namespace Models.UserRelated
 {
     public class Employee
     {

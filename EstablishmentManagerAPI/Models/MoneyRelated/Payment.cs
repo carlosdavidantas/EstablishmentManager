@@ -1,5 +1,4 @@
 ﻿using EstablishmentManagerLibrary.Models.OrdersRelated;
-using System.ComponentModel.DataAnnotations;
 
 namespace EstablishmentManagerLibrary.Models.MoneyRelated
 {

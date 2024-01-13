@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EstablishmentManagerLibrary.Models.UserRelated
+﻿namespace EstablishmentManagerLibrary.Models.UserRelated
 {
     public class User
     {

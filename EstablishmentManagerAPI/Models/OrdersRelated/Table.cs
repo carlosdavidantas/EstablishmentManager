@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EstablishmentManagerLibrary.Models.OrdersRelated
+﻿namespace EstablishmentManagerLibrary.Models.OrdersRelated
 {
     public class Table
     {

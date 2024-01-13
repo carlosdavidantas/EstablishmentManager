@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EstablishmentManagerLibrary.Models.MoneyRelated
+﻿namespace EstablishmentManagerLibrary.Models.MoneyRelated
 {
     public class Transaction
     {

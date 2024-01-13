@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace EstablishmentManagerLibrary.Models.ClientRelated
+﻿namespace EstablishmentManagerLibrary.Models.ClientRelated
 {
     public class Client
     {

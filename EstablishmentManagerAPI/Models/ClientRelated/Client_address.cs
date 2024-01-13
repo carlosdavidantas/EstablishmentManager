@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace EstablishmentManagerLibrary.Models.ClientRelated
+﻿namespace EstablishmentManagerLibrary.Models.ClientRelated
 {
     public class Client_address
     {

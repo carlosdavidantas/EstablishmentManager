@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EstablishmentManagerLibrary.Models.InventoryRelated
+﻿namespace EstablishmentManagerLibrary.Models.InventoryRelated
 {
     public class Product_observation
     {

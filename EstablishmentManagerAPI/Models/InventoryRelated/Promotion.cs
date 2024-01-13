@@ -13,7 +13,11 @@
         public ICollection<Group_of_product> Group_of_products { get; set; }
 
 
-        public Promotion() { }
+        public Promotion() 
+        {
+            Products = new List<Product>();
+            Group_of_products = new List<Group_of_product>();
+        }
         
 
         public Promotion(string name, string description, decimal sell_price, string category)
@@ -23,6 +27,8 @@
             Sell_price = sell_price;
             Category = category;
             Created = DateTime.Now;
+            Products = new List<Product>();
+            Group_of_products = new List<Group_of_product>();
         }
 
         public int PromotionId { get => _promotionId; set => _promotionId = value; }

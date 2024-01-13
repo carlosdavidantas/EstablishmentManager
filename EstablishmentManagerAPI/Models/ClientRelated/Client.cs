@@ -12,11 +12,15 @@
         private decimal _credit_on_establishment;
         private decimal _debit_on_establishment;
 
-        public ICollection<Client_telephone> Client_Telephones { get; set; }
+        public ICollection<Client_telephone> Client_telephones { get; set; }
         public ICollection<Client_address> Client_addresses { get; set; }
 
 
-        public Client() { }
+        public Client()
+        {
+            Client_telephones = new List<Client_telephone>();
+            Client_addresses = new List<Client_address>();
+        }
 
         public Client(string name, string cpf, DateTime birthday, string rg, decimal credit_on_establishment, 
             decimal debit_on_establishment)
@@ -29,6 +33,8 @@
             Modified_date = DateTime.Now;
             Credit_on_establishment = credit_on_establishment;
             Debit_on_establishment = debit_on_establishment;
+            Client_telephones = new List<Client_telephone>();
+            Client_addresses = new List<Client_address>();
         }
 
         public int ClientId { get => _clientId; set => _clientId = value; }

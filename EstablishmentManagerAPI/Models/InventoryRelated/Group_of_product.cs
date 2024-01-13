@@ -17,7 +17,10 @@
         public Promotion Promotion { get; set; }
 
 
-        public Group_of_product() { }
+        public Group_of_product()
+        {
+            Products = new List<Product>();
+        }
         
         
         public Group_of_product(string name, string description, string category, decimal cost_price, decimal sell_price)
@@ -28,7 +31,7 @@
             Cost_price = cost_price;
             Sell_price = sell_price;
             Created = DateTime.Now;
-
+            Products = new List<Product>();
         }
 
         public int Group_of_productId { get => _group_of_productId; set => _group_of_productId = value; }

@@ -13,7 +13,10 @@
 
         public ICollection<Order> Orders { get; set; }
 
-        public Delivery() { }
+        public Delivery()
+        {
+            Orders = new List<Order>();
+        }
         
 
         public Delivery(int id_deliveryman_employee, int id_client, decimal tax_value, 
@@ -25,6 +28,7 @@
             Creation_date = DateTime.Now;
             Creation_time = DateTime.Now;
             _time_deliveryman_arrived = time_deliveryman_arrived;
+            Orders = new List<Order>();
         }
 
         public int DeliveryId { get => _deliveryId; set => _deliveryId = value; }

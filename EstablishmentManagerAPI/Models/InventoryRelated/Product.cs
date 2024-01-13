@@ -23,7 +23,11 @@
         public Promotion Promotion { get; set; }
 
 
-        public Product() { }
+        public Product()
+        {
+            Product_addons = new List<Product_addon>();
+            Product_observations = new List<Product_observation>();
+        }
         
 
         public Product(string name, string description, string category, decimal cost_price, decimal sell_price)
@@ -34,6 +38,8 @@
             Cost_price = cost_price;
             Sell_price = sell_price;
             Created = DateTime.Now;
+            Product_addons = new List<Product_addon>();
+            Product_observations = new List<Product_observation>();
         }
 
         public int ProductId { get => _productId; set => _productId = value; }

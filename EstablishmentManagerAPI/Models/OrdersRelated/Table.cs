@@ -11,7 +11,10 @@
         public ICollection<Order> Orders { get; set; }
 
 
-        public Table() { }
+        public Table()
+        {
+            Orders = new List<Order>();
+        }
         
 
         public Table(string name, DateTime initial_time)
@@ -19,6 +22,7 @@
             Name = name;
             Usage_date = DateTime.Now;
             Initial_time = initial_time;
+            Orders = new List<Order>();
         }
 
         public int TableId { get => _tableId; set => _tableId = value; }

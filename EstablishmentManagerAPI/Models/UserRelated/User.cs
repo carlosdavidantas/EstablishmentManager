@@ -9,7 +9,10 @@
 
         public ICollection<Permission> Permissions { get; set; }
 
-        public User() { }
+        public User()
+        {
+            Permissions = new List<Permission>();
+        }
         
 
         public User(int id_permission, string login, string password)
@@ -17,6 +20,7 @@
             Id_permission = id_permission;
             Login = login;
             Password = password;
+            Permissions = new List<Permission>();
         }
 
         public int UserId { get => _userId; set => _userId = value; }

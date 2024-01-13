@@ -20,7 +20,11 @@ namespace Models.OrdersRelated
         public int Table_id { get; set; }
         public Table Table { get; set; }
 
-        public Order() { }
+
+        public Order()
+        {
+            Payments = new List<Payment>();
+        }
         
 
         public Order(int id_table, int id_delivery, string client_name_note, string observation)
@@ -29,6 +33,7 @@ namespace Models.OrdersRelated
             Id_delivery = id_delivery;
             Client_name_note = client_name_note;
             Observation = observation;
+            Payments = new List<Payment>();
         }
 
         public int OrderId { get => _orderId; set => _orderId = value; }

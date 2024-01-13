@@ -6,16 +6,20 @@
         private DateTime _date;
         private DateTime _hour;
 
-        public ICollection<Payment> Payment { get; set; }
+        public ICollection<Payment> Payments { get; set; }
 
 
-        public Transaction() { }
+        public Transaction()
+        {
+            Payments = new List<Payment>();
+        }
 
 
         public Transaction(DateTime date, DateTime hour)
         {
             Date = date;
             Hour = hour;
+            Payments = new List<Payment>();
         }
 
         public int TransactionId { get => _transactionId; set => _transactionId = value; }    

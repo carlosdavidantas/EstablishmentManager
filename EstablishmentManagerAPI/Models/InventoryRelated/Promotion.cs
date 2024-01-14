@@ -7,7 +7,7 @@
         private string _description;
         private decimal _sell_price;
         private string _category;
-        private DateTime _created;
+        private DateOnly _creation_date;
 
         public ICollection<Product> Products { get; set; }
         public ICollection<Group_of_product> Group_of_products { get; set; }
@@ -26,7 +26,7 @@
             Description = description;
             Sell_price = sell_price;
             Category = category;
-            Created = DateTime.Now;
+            Creation_date = DateOnly.Parse(DateTime.Now.ToString());
             Products = new List<Product>();
             Group_of_products = new List<Group_of_product>();
         }
@@ -36,6 +36,6 @@
         public string Description { get => _description; set => _description = value; }
         public decimal Sell_price { get => _sell_price; set => _sell_price = value; }
         public string Category { get => _category; set => _category = value; }
-        public DateTime Created { get => _created; set => _created = value; }
+        public DateOnly Creation_date { get => _creation_date; set => _creation_date = value; }
     }
 }

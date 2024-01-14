@@ -26,10 +26,10 @@ app.MapGet("/v1/clients/", async (AppDbContext context) =>
 
 app.MapGet("/v1/clients/{search}", async (string search, AppDbContext context) =>
 {
-    DateTime birth;
+    DateOnly birth;
     int idResult;
 
-    bool convertDate = DateTime.TryParse(search, out birth);
+    bool convertDate = DateOnly.TryParse(search, out birth);
     bool convertId = int.TryParse(search, out idResult);
 
     var clientsFoundList = await context.Clients.Include(client => client.Client_telephones).Where(client => client.ClientId == idResult

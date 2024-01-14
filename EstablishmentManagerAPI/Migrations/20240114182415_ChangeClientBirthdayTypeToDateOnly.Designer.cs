@@ -4,6 +4,7 @@ using EstablishmentManagerAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstablishmentManagerAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240114182415_ChangeClientBirthdayTypeToDateOnly")]
+    partial class ChangeClientBirthdayTypeToDateOnly
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +40,8 @@ namespace EstablishmentManagerAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("Creation_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Creation_date")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("Credit_on_establishment")
                         .HasColumnType("decimal");
@@ -46,8 +49,8 @@ namespace EstablishmentManagerAPI.Migrations
                     b.Property<decimal>("Debit_on_establishment")
                         .HasColumnType("decimal");
 
-                    b.Property<DateOnly>("Modified_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Modified_date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -81,15 +84,15 @@ namespace EstablishmentManagerAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("Creation_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Creation_date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("Modified_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Modified_date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Number")
                         .IsRequired()
@@ -121,15 +124,15 @@ namespace EstablishmentManagerAPI.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("Creation_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Creation_date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("Modified_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Modified_date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Number")
                         .IsRequired()
@@ -157,8 +160,8 @@ namespace EstablishmentManagerAPI.Migrations
                     b.Property<decimal>("Cost_price")
                         .HasColumnType("decimal");
 
-                    b.Property<DateOnly>("Creation_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -196,8 +199,8 @@ namespace EstablishmentManagerAPI.Migrations
                     b.Property<decimal>("Cost_price")
                         .HasColumnType("decimal");
 
-                    b.Property<DateOnly>("Creation_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -240,8 +243,8 @@ namespace EstablishmentManagerAPI.Migrations
                     b.Property<decimal>("Cost_price")
                         .HasColumnType("decimal");
 
-                    b.Property<DateOnly>("Creation_dat")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -302,8 +305,8 @@ namespace EstablishmentManagerAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("Creation_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -329,8 +332,8 @@ namespace EstablishmentManagerAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StockId"));
 
-                    b.Property<DateOnly>("Added_to_stock")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Added_to_stock")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Id_product")
                         .HasColumnType("int");
@@ -388,8 +391,8 @@ namespace EstablishmentManagerAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
 
-                    b.Property<DateOnly>("Hour")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Hour")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("TransactionId");
 
@@ -404,11 +407,11 @@ namespace EstablishmentManagerAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DeliveryId"));
 
-                    b.Property<DateOnly>("Creation_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Creation_date")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateOnly>("Creation_time")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Creation_time")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Id_client")
                         .HasColumnType("int");
@@ -488,8 +491,8 @@ namespace EstablishmentManagerAPI.Migrations
                     b.Property<DateTime>("Time_spent")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateOnly>("Usage_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Usage_date")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("TableId");
 
@@ -504,15 +507,15 @@ namespace EstablishmentManagerAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeId"));
 
-                    b.Property<DateOnly>("Birthday")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Cpf")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("Creation_date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Id_user")
                         .HasColumnType("int");
@@ -554,9 +557,6 @@ namespace EstablishmentManagerAPI.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
-
-                    b.Property<DateOnly>("Creation_date")
-                        .HasColumnType("date");
 
                     b.Property<int>("Id_permission")
                         .HasColumnType("int");

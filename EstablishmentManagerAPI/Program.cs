@@ -1,11 +1,17 @@
 using EstablishmentManagerAPI.Data;
 using Microsoft.EntityFrameworkCore;
-using Models.ClientRelated;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<AppDbContext>();
-var app = builder.Build();
 
+builder.Services.AddDbContext<AppDbContext>();
+
+//Configure Json to handle cycle.
+builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>
+    (options => options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+
+var app = builder.Build();
 
 app.MapGet("/v1/clients/", async (AppDbContext context) =>
 {
@@ -20,8 +26,14 @@ app.MapGet("/v1/clients/", async (AppDbContext context) =>
 
 app.MapGet("/v1/clients/{search}", async (string search, AppDbContext context) =>
 {
-    var clientsFoundList = await context.Clients.Where(client => client.ClientId == int.Parse(search)
-    || client.Name == search || client.Cpf == search).ToListAsync();
+    DateTime birth;
+    int idResult;
+
+    bool convertDate = DateTime.TryParse(search, out birth);
+    bool convertId = int.TryParse(search, out idResult);
+
+    var clientsFoundList = await context.Clients.Include(client => client.Client_telephones).Where(client => client.ClientId == idResult
+    || client.Birthday == birth || client.Name == search || client.Cpf == search || client.Rg == search).ToListAsync();
 
     if(clientsFoundList.Count == 0)
     {

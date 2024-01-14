@@ -5,7 +5,7 @@
         private int _clientId;
         private string _name;
         private string _cpf;
-        private DateTime _birthday;
+        private DateOnly _birthday;
         private string _rg;
         private DateTime _creation_date;
         private DateTime _modified_date;
@@ -22,7 +22,7 @@
             Client_addresses = new List<Client_address>();
         }
 
-        public Client(string name, string cpf, DateTime birthday, string rg, decimal credit_on_establishment, 
+        public Client(string name, string cpf, DateOnly birthday, string rg, decimal credit_on_establishment, 
             decimal debit_on_establishment)
         {
             Name = name;
@@ -40,7 +40,7 @@
         public int ClientId { get => _clientId; set => _clientId = value; }
         public string Name { get => _name; set => _name = value; }
         public string Cpf { get => _cpf; set => _cpf = value; }
-        public DateTime Birthday { get => _birthday; set => _birthday = value; }
+        public DateOnly Birthday { get => _birthday; set => _birthday = value; }
         public string Rg { get => _rg; set => _rg = value; }
         public DateTime Creation_date { get => _creation_date; set => _creation_date = value; }
         public DateTime Modified_date { get => _modified_date; set => _modified_date = value; }

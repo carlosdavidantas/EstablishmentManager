@@ -18,7 +18,7 @@
             Birthday = birthday;
             Name = name;
             Cpf = cpf;
-            Creation_date = DateOnly.Parse(DateTime.Now.ToString());
+            Creation_date = DateOnly.FromDateTime(DateTime.Today);
         }
 
         public int EmployeeId { get => _employeeId; set => _employeeId = value; }

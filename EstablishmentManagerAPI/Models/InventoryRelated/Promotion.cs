@@ -26,7 +26,7 @@
             Description = description;
             Sell_price = sell_price;
             Category = category;
-            Creation_date = DateOnly.Parse(DateTime.Now.ToString());
+            Creation_date = DateOnly.FromDateTime(DateTime.Today);
             Products = new List<Product>();
             Group_of_products = new List<Group_of_product>();
         }

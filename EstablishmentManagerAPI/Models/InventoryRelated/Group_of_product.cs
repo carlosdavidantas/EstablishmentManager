@@ -30,7 +30,7 @@
             Category = category;
             Cost_price = cost_price;
             Sell_price = sell_price;
-            Creation_date = DateOnly.Parse(DateTime.Now.ToString());
+            Creation_date = DateOnly.FromDateTime(DateTime.Today);
             Products = new List<Product>();
         }
 

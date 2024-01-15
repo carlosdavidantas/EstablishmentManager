@@ -20,8 +20,8 @@
         {
             Number = number;
             Description = description;
-            Creation_date = DateOnly.Parse(DateTime.Now.ToString());
-            Modified_date = DateOnly.Parse(DateTime.Now.ToString());
+            Creation_date = DateOnly.FromDateTime(DateTime.Today);
+            Modified_date = DateOnly.FromDateTime(DateTime.Today);
         }
 
         public int Client_telephoneId { get => _client_telephoneId; set => _client_telephoneId = value; }

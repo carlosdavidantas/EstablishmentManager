@@ -29,8 +29,8 @@
             Reference = reference;
             Number = number;
             Description = description;
-            Creation_date = DateOnly.Parse(DateTime.Now.ToString());
-            Modified_date = DateOnly.Parse(DateTime.Now.ToString());
+            Creation_date = DateOnly.FromDateTime(DateTime.Today);
+            Modified_date = DateOnly.FromDateTime(DateTime.Today);
         }
 
         public int Client_addressId { get => _client_addressId; set => _client_addressId = value; }

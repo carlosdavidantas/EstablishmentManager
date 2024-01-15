@@ -24,7 +24,7 @@
             Category = category;
             Cost_price = cost_price;
             Sell_price = sell_price;
-            Creation_dat = DateOnly.Parse(DateTime.Now.ToString());
+            Creation_dat = DateOnly.FromDateTime(DateTime.Today);
         }
 
         public int Product_addonId { get => _product_addonId; set => _product_addonId = value; }

@@ -20,7 +20,7 @@
         public Table(string name, DateTime initial_time)
         {
             Name = name;
-            Usage_date = DateOnly.Parse(DateTime.Now.ToString());
+            Usage_date = DateOnly.FromDateTime(DateTime.Today);
             Initial_time = initial_time;
             Orders = new List<Order>();
         }

@@ -25,8 +25,8 @@
             Id_deliveryman_employee = id_deliveryman_employee; 
             Id_client = id_client;
             Tax_value = tax_value;
-            Creation_date = DateOnly.Parse(DateTime.Now.ToString());
-            Creation_time = DateOnly.Parse(DateTime.Now.ToString());
+            Creation_date = DateOnly.FromDateTime(DateTime.Today);
+            Creation_time = DateOnly.FromDateTime(DateTime.Today);
             Time_deliveryman_arrived = time_deliveryman_arrived;
             Orders = new List<Order>();
         }

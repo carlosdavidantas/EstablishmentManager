@@ -22,7 +22,7 @@
             Login = login;
             Password = password;
             Permissions = new List<Permission>();
-            Creation_date = DateOnly.Parse(DateTime.Now.ToString());
+            Creation_date = DateOnly.FromDateTime(DateTime.Today);
         }
 
         public int UserId { get => _userId; set => _userId = value; }

@@ -29,8 +29,8 @@
             Cpf = cpf;
             Birthday = birthday;
             Rg = rg;
-            Creation_date = DateOnly.Parse(DateTime.Now.ToString());
-            Modified_date = DateOnly.Parse(DateTime.Now.ToString());
+            Creation_date = DateOnly.FromDateTime(DateTime.Today);
+            Modified_date = DateOnly.FromDateTime(DateTime.Today);
             Credit_on_establishment = credit_on_establishment;
             Debit_on_establishment = debit_on_establishment;
             Client_telephones = new List<Client_telephone>();

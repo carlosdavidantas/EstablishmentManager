@@ -1,0 +1,50 @@
+body {
+    background-color: lightgray;
+    width: 90vw;
+    height: 90vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border: 3px solid green;*/
+}
+
+.loginSection {
+    background-color: white;
+    width: 50vw;
+    height: 30vh;
+    border-radius: 1.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 6vw;
+}
+
+.textBoxDescription {
+    font-size: 2.5vw;
+    font-family: 'Lucida Sans';
+    color: rgb(0, 0, 0);
+}
+
+.textBoxLogin {
+    border-radius: 1vw;
+    border-color: transparent;
+    font-size: 2.3vw;
+    resize: none;
+    font-family: 'Lucida Sans';
+    background-color: darkgrey;
+}
+
+.textBoxPassword {
+    background-color: darkgrey;
+    border-color: transparent;
+    border-radius: 1vw;
+    font-size: 2.3vw;
+    resize: none;
+    font-family: 'Lucida Sans';
+    color: transparent;
+    text-shadow: 0 0 8px rgba(10, 10, 10, 0.2);
+}

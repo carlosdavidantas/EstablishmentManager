@@ -1,4 +1,5 @@
 const {app, BrowserWindow} = require('electron');
+const openAPI = require("./openAPI.js");
 
 const createWindow = () => {
     const window = new BrowserWindow({
@@ -6,6 +7,7 @@ const createWindow = () => {
         height: 600
     });
     window.loadFile('pages\\login.html');
+    openAPI.execute();
 }
 
 app.whenReady().then(() => {

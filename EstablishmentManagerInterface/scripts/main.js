@@ -5,7 +5,7 @@ const createWindow = () => {
         width: 800,
         height: 600
     });
-    window.loadFile('pages\\home.html');
+    window.loadFile('pages\\login.html');
 }
 
 app.whenReady().then(() => {

@@ -4,14 +4,17 @@
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="login.css" />
     <meta charset="UTF-8" />
+
+    <!-- The following CSPs will allow Electron to execute scripts from the current website and from http://localhost:5000 -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self' http://localhost:5000"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self' http://localhost:5000"
     />
+    <!---->
 
     <title>Establishment Manager</title>
   </head>
@@ -22,5 +25,6 @@
       <label for="textBoxPassword" class="textBoxDescription">Password</label>
       <input type="text" minlength="0" maxlength="12" rows="1" class="textBoxPassword"/>
     </section>
+    <script src="../scripts/getInfoFromDB.js"></script>
   </body>
 </html>

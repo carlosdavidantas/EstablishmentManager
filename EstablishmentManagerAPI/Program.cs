@@ -1,6 +1,7 @@
 using EstablishmentManagerAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Models.ClientRelated;
+using Models.UserRelated;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,6 +44,8 @@ void SettingTest(AppDbContext context)
     context.Clients.Add(client);
     context.SaveChanges();
 }
+
+//Client routes
 
 //Return every client with telephones and addresses info.
 app.MapGet("/v1/clients/", async (AppDbContext context) =>
@@ -211,5 +214,25 @@ app.MapGet("/v1/products/{search}", async (string search, AppDbContext context) 
     }
     return Results.Ok(productFoundList);
 });
+
+
+
+
+
+//User routes
+app.MapGet("v1/user", async (User userSent, AppDbContext context) =>
+{
+    var userFound = await context.Users
+    .Where(user => user.UserId == userSent.UserId && user.Password == userSent.Password).ToListAsync();
+
+    if(userFound.Count == 0)
+        return Results.NoContent();
+
+    return Results.Ok(userFound);
+});
+
+
+
+
 
 app.Run();

@@ -220,19 +220,20 @@ app.MapGet("/v1/products/{search}", async (string search, AppDbContext context) 
 
 
 //User routes
-app.MapGet("v1/user", async (User userSent, AppDbContext context) =>
+app.MapPost("v1/login", async (User userSent, AppDbContext context) =>
 {
-    var userFound = await context.Users
-    .Where(user => user.UserId == userSent.UserId && user.Password == userSent.Password).ToListAsync();
-
-    if(userFound.Count == 0)
+    var userFoundList = await context.Users.ToListAsync();
+    if (userFoundList.Count == 0)
         return Results.NoContent();
 
-    return Results.Ok(userFound);
+    foreach (var user in userFoundList)
+    {
+        if (user.Login == userSent.Login && user.Password == userSent.Password)
+            return Results.Ok(user);
+    }
+
+    return Results.NotFound();
 });
-
-
-
 
 
 app.Run();

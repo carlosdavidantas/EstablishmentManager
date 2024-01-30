@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require("electron");
 const API = require("./API.js");
 const loginPagePath = "./pages/login/login.html";
+let APIExe;
 
 function createWindow (pathHtmlPage){
     const window = new BrowserWindow({
@@ -15,11 +16,14 @@ function createWindow (pathHtmlPage){
 }
 
 app.whenReady().then(() => {
-    API.open();
+    APIExe = API.open();
     createWindow(loginPagePath);
 });
 
 app.on('window-all-closed', () => {
-    if(process.platform !== 'darwin')
+    if(process.platform !== 'darwin'){
         app.quit();
+        APIExe.kill();
+    }
+        
 });

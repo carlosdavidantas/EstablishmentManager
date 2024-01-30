@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="login.css" />
     <meta charset="UTF-8" />
 
-    <!-- The following CSPs will allow Electron to execute scripts from the current website and from http://localhost:5000 -->
+    <!-- The following CSPs will allow Electron to execute scripts from the current website and from the APIUrl -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self' http://localhost:5000"
@@ -21,10 +21,11 @@
   <body>
     <section class="loginSection">
       <label for="textBoxLogin" class="textBoxDescription">Login</label>
-      <input type="text" minlength="0" maxlength="50" rows="1" class="textBoxLogin"/>
+      <input type="text" id="userTextBox" minlength="0" maxlength="50" rows="1" class="textBoxLogin"/>
       <label for="textBoxPassword" class="textBoxDescription">Password</label>
-      <input type="text" minlength="0" maxlength="12" rows="1" class="textBoxPassword"/>
+      <input type="text" id="passwordTextBox" minlength="0" maxlength="12" rows="1" class="textBoxPassword"/>
+      <label type="text" id="wrongLogin"></label>
     </section>
-    <script src="../scripts/getInfoFromDB.js"></script>
+    <script src="login.js"></script>
   </body>
 </html>

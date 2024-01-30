@@ -1,22 +1,22 @@
-const {app, BrowserWindow} = require("electron");
-const nodePath = require("node:path");
-const openAPI = require("./openAPI.js");
+const { app, BrowserWindow } = require("electron");
+const API = require("./API.js");
+const loginPagePath = "./pages/login/login.html";
 
-const createWindow = () => {
+function createWindow (pathHtmlPage){
     const window = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1000,
+        height: 800,
         webPreferences: {
-            preload: nodePath.join(__dirname, "preload.js")
+            nodeIntegration: true,
+            contextIsolation: false,
         }
     });
-    
-    window.loadFile("./pages/login/login.html");
+    window.loadFile(pathHtmlPage);
 }
 
 app.whenReady().then(() => {
-    createWindow();
-    openAPI.execute();
+    API.open();
+    createWindow(loginPagePath);
 });
 
 app.on('window-all-closed', () => {

@@ -15,7 +15,8 @@ function open() {
     
     exe.on('exit', (code) => { 
         console.log(`Child exited with code ${code}`); 
-    }); 
+    });
+    return exe;
 }
 
 module.exports = { open, URL }

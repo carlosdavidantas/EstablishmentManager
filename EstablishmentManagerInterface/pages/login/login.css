@@ -48,3 +48,9 @@ body {
     color: transparent;
     text-shadow: 0 0 8px rgba(10, 10, 10, 0.2);
 }
+
+.wrongLogin {
+    font-size: 1.5vw;
+    font-family: 'Lucida Sans';
+    color: rgb(200, 0, 0);
+}

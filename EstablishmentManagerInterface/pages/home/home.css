@@ -48,10 +48,11 @@ body {
 }
 
 .defaultButtons {
-    width: 17.17vw;
-    height: 22.17vh;
+    width: 15.77vw;
+    height: 20.77vh;
     margin-top: 3.5vh;
-    margin-left: 3.5vh;
+    margin-left: 1.75vw;
+    margin-right: 1.75vw;
     margin-bottom: 3.5vh;
     background-color: rgb(120, 120, 120);
     border-radius: 10px;

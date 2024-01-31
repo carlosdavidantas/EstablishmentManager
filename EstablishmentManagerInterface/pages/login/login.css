@@ -1,5 +1,5 @@
 body {
-    background-color: lightgray;
+    background-color: rgb(225, 225, 225);
     width: 90vw;
     height: 90vh;
     margin-top: 5vh;
@@ -35,11 +35,11 @@ body {
     font-size: 2.3vw;
     resize: none;
     font-family: 'Lucida Sans';
-    background-color: darkgrey;
+    background-color: rgb(120, 120, 120);
 }
 
 .textBoxPassword {
-    background-color: darkgrey;
+    background-color: rgb(120, 120, 120);
     border-color: transparent;
     border-radius: 1vw;
     font-size: 2.3vw;

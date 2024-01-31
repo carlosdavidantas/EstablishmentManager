@@ -1,64 +1,69 @@
 body {
-    background-color: lightgray;
-    width: 90vw;
-    height: 90vh;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    background-color: rgb(225, 225, 225);
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     /*border: 3px solid green;*/
 }
 
 .configurationItems {
     background-color: white;
-    width: 95vw;
-    height: 11vh;
-    border-radius: 1.5vw;
+    width: 96.5vw;
+    height: 10vh;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .configurationButtons {
-    width: 12vw;
-    height: 8vh;
+    width: 3.8vw;
+    height: 6.8vh;
     margin-top: 1.1vh;
-    margin-left: 1vw;
+    margin-left: 3.5vh;
     margin-right: 1vw;
     margin-bottom: 1.1vh;
-    background-color: darkgray;
-    border-radius: 0.8vw;
+    background-color: rgb(120, 120, 120);
+    border-radius: 10px;
     border-color: lightgray;
     font-family: 'Lucida Sans';
     font-size: 1.3vw;
-    color: rgb(40, 40, 40);
+    color: rgb(255, 255, 255);
 }
 
 .defaultItems {
-    margin-top: 5vh;
+    margin-top: 3.5vh;
     background-color: white;
-    width: 95vw;
-    height: 79vh;
-    border-radius: 1.5vw;
+    width: 96.5vw;
+    height: 80vh;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content:flex-start;
     flex-wrap: wrap;
 }
 
 .defaultButtons {
-    width: 12vw;
-    height: 22vh;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    background-color: darkgray;
-    border-radius: 1vw;
+    width: 17.17vw;
+    height: 22.17vh;
+    margin-top: 3.5vh;
+    margin-left: 3.5vh;
+    margin-bottom: 3.5vh;
+    background-color: rgb(120, 120, 120);
+    border-radius: 10px;
     border-color: lightgray;
     font-family: 'Lucida Sans';
     font-size: 1.5vw;
+    color: rgb(40, 40, 40);
+}
+
+.EstablishmentName {
+    margin-top: 2vh;
+    font-family: 'Lucida Sans';
+    font-size: 12px;
     color: rgb(40, 40, 40);
 }

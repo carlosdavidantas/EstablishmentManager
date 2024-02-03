@@ -220,7 +220,7 @@ app.MapGet("/v1/get/products/{search}", async (string search, AppDbContext conte
 });
 
 //User routes
-//Route that verify the login sended.
+//Route that verify the login sent.
 app.MapPost("v1/post/login", async (User userSent, AppDbContext context) =>
 {
     var userFoundList = await context.Users.ToListAsync();

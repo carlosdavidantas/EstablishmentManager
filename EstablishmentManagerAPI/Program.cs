@@ -45,8 +45,7 @@ void SettingTest(AppDbContext context)
     context.SaveChanges();
 }
 
-//Client routes
-
+//Clients routes
 //Return every client with telephones and addresses info.
 app.MapGet("/v1/clients/", async (AppDbContext context) =>
 {
@@ -85,6 +84,8 @@ app.MapGet("/v1/clients/{search}", async (string search, AppDbContext context) =
     return Results.Ok(clientsFoundList);
 });
 
+
+//Telephones routes.
 //Return every telephones with a client object.
 app.MapGet("/v1/telephones", async (AppDbContext context) =>
 {
@@ -116,6 +117,7 @@ app.MapGet("/v1/telephones/{search}", async (string search, AppDbContext context
     return Results.Ok(telephonesFoundList);
 });
 
+//Addresses routes
 //Return every address with a client object.
 app.MapGet("/v1/addresses", async (AppDbContext context) =>
 {
@@ -147,6 +149,7 @@ app.MapGet("/v1/addresses/{search}", async (string search, AppDbContext context)
     return Results.Ok(addressesFoundList);
 });
 
+//Group of products routes
 //Return every group of product with the products.
 app.MapGet("/v1/group-of-product/", async (AppDbContext context) =>
 {
@@ -180,6 +183,7 @@ app.MapGet("/v1/group-of-product/{search}", async (string search, AppDbContext c
     return Results.Ok(groupOfProductFoundList);
 });
 
+//Products route
 //Return every product with addons and observations options.
 app.MapGet("/v1/products/", async (AppDbContext context) =>
 {
@@ -215,11 +219,8 @@ app.MapGet("/v1/products/{search}", async (string search, AppDbContext context) 
     return Results.Ok(productFoundList);
 });
 
-
-
-
-
 //User routes
+//Route that verify the login sended.
 app.MapPost("v1/login", async (User userSent, AppDbContext context) =>
 {
     var userFoundList = await context.Users.ToListAsync();
@@ -234,6 +235,7 @@ app.MapPost("v1/login", async (User userSent, AppDbContext context) =>
 
     return Results.NotFound();
 });
+
 
 
 app.Run();

@@ -84,6 +84,12 @@ app.MapGet("/v1/get/clients/{search}", async (string search, AppDbContext contex
     return Results.Ok(clientsFoundList);
 });
 
+app.MapPost("v1/post/clients", async (Client sentClient, AppDbContext context) =>
+{
+    await context.Clients.AddAsync(sentClient);
+    await context.SaveChangesAsync();
+    return Results.Created($"v1/post/clients/{sentClient.ClientId}", sentClient);
+});
 
 //Telephones routes.
 //Return every telephones with a client object.

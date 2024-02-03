@@ -1,6 +1,6 @@
 const postDB = require("../../scripts/postDB.js");
 let API = require("../../scripts/API.js")
-const postLoginURL = `${API.URL}login`;
+const postLoginURL = `${API.URL}post/login`;
 const loginStatus = document.getElementById("loginStatus");
 
 document.getElementById("passwordTextBox").addEventListener("keydown", async (keydownEvent) => {

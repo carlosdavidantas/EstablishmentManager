@@ -1,6 +1,6 @@
 const API = require("../../scripts/API.js");
 const getDB = require("../../scripts/getDB.js");
-const allClientsRoute = `${API.URL}clients`;
+const allClientsRoute = `${API.URL}get/clients`;
 const clientList = document.getElementById("clientList");
 
 let clients;

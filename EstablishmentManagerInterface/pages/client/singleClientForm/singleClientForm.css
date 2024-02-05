@@ -1,0 +1,119 @@
+body {
+    background-color: rgb(225, 225, 225);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    background-color: white;
+    width: 96.5vw;
+    height: 94vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.editButton {
+    position: absolute;
+    background-color: rgb(225, 225, 225);
+    width: 10vw;
+    height: 5vh;
+    border-color: transparent;
+    border-radius: 5px;
+    margin-bottom: 94vh;
+}
+
+.infosSpace {
+    width: 45vw;
+    height: 83vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.textLabel {
+    font-family: 'Lucida Sans';
+    font-size: large;
+}
+
+.textBox {
+    font-family: 'Lucida Sans';
+    font-size: x-large;
+    background-color: rgb(225, 225, 225);
+    border-color: transparent;
+}
+
+.phoneSpace {
+    width: 45vw;
+    height: 38.73vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.phonesList {
+    margin-top: 1vh;
+    width: 45vw;
+    height: 34.73vh;
+    border-radius: 10px;
+    background-color: rgb(225, 225, 225);
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.object {
+    background-color: rgb(160, 160, 160);
+    margin-top: 2vh;
+    width: 42vw;
+    height: 5vh;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 1vh;
+}
+
+.addressesSpace {
+    width: 45vw;
+    height: 38.73vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.addressesList {
+    margin-top: 1vh;
+    width: 45vw;
+    height: 34.73vh;
+    border-radius: 10px;
+    background-color: rgb(225, 225, 225);
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.bottomRectangle {
+    position: absolute;
+    background-color: rgb(225, 225, 225);
+    width: 10vw;
+    height: 5vh;
+    border-color: transparent;
+    border-radius: 5px;
+    margin-top: 94vh;
+}

@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../../reset.css" />
-        <link rel="stylesheet" href="clientForm.css" />
+        <link rel="stylesheet" href="singleClientForm.css" />
         <meta charset="UTF-8" />
         <meta
             http-equiv="Content-Security-Policy"
@@ -12,10 +12,51 @@
             http-equiv="X-Content-Security-Policy"
             content="default-src 'self' http://localhost:5000"
         />
-        <title>Establishment Manager</title>
+        <title>Client</title>
     </head>
     <body>
-        
+        <section class="background">
+            <button class="editButton">Edit</button>
+            <section class="infosSpace">
+                <label class="textLabel">Name:</label>
+                <input type="text" disabled="true" class="textBox" id="nameText"></label>
+                <label class="textLabel">CPF:</label>
+                <input type="text" disabled="true" class="textBox" id="cpfText"></label>
+                <label class="textLabel">Birthday:</label>
+                <input type="text" disabled="true" class="textBox" id="birthdayText"></label>
+                <label class="textLabel">RG:</label>
+                <input type="text" disabled="true" class="textBox" id="rgText"></label>
+                <label class="textLabel">Creation date:</label>
+                <input type="text" disabled="true" class="textBox" id="creationDateText"></label>
+                <label class="textLabel">Modified date:</label>
+                <input type="text" disabled="true" class="textBox" id="nmodifiedDateText"></label>
+                <label class="textLabel">Debit:</label>
+                <input type="text" disabled="true" class="textBox" id="debitText"></label>
+                <label class="textLabel">Credit:</label>
+                <input type="text" disabled="true" class="textBox" id="creditText"></label>
+            </section>
+            <section class="phoneSpace">
+                <label class="textLabel">Phone numbers:</label>
+                <ul class="phonesList">
+                    <h1 class="object">Text</h1>
+                    <h1 class="object">Text</h1>
+                    <h1 class="object">Text</h1>
+                    <h1 class="object">Text</h1>
+                    <h1 class="object">Text</h1>
+                </ul>
+            </section>
+            <section class="addressesSpace">
+                <label class="textLabel">Addresses:</label>
+                <ul class="addressesList">
+                    <h1 class="object">Text</h1>
+                    <h1 class="object">Text</h1>
+                    <h1 class="object">Text</h1>
+                    <h1 class="object">Text</h1>
+                    <h1 class="object">Text</h1>
+                </ul>
+            </section>
+            <section class="bottomRectangle"></section>
+        </section>
         <script src="singleClientForm.js"></script>
     </body>
 </html>

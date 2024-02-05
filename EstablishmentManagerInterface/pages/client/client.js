@@ -41,8 +41,8 @@ function createClientObject(name, phone, creationDate, id) {
 async function getAllClients() {
     allClientsResponse = await getDB.execute(allClientsRoute);
     clients = allClientsResponse[1];
-    clients.forEach((client, index) => {
-        createClientObject(`${client.name}`, `${client.client_telephones[0].number}`, `${client.creation_date}`, index);
+    clients.forEach((client) => {
+        createClientObject(`${client.name}`, `${client.client_telephones[0].number}`, `${client.creation_date}`, client.clientId);
     });
 }
 getAllClients();

@@ -41,18 +41,19 @@ body {
 
 .searchText {
     margin-left: 1vw;
-    background-color:  rgb(225, 225, 225);
+    background-color: rgb(225, 225, 225);
     height: 4vh;
     width: 90vw;
     border-width: 0px;
     border-radius: 10px;
     font-size: 20px;
-    outline-width: 0px; /**/
+    outline-width: 0px;
+    /**/
     font-family: 'Lucida Sans';
     font-size: 3vh;
 }
 
-.clientObjects{
+.clientObjects {
     margin-top: 3.5vh;
     background-color: white;
     width: 96.5vw;
@@ -76,9 +77,8 @@ ul {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex-wrap:wrap ;
+    flex-wrap: wrap;
 }
-
 
 .clientObject {
     background-color: rgb(160, 160, 160);

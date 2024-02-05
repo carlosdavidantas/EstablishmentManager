@@ -97,6 +97,7 @@ body {
     width: 36vw;
     background-color: rgb(225, 225, 225);
     border-color: transparent;
+    text-align: center;
 }
 
 .editObjectButton {

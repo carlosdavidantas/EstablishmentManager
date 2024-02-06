@@ -1,7 +1,7 @@
 const API = require("../../../scripts/API.js");
 const getDB = require("../../../scripts/getDB.js");
-const id = 7;
-const specificClientURL = `${API.URL}get/clients/${id}`;
+const { ipcRenderer } = require('electron'); // ipcrenderer is needed to receive the client id from the previous page.
+
 const elementPhoneList = document.getElementById("phonesList");
 const elementAddressesList = document.getElementById("addressesList");
 
@@ -18,6 +18,12 @@ let specificClientResponse;
 let clientInfos;
 let phonesList;
 let addressesList;
+
+
+ipcRenderer.on('receivedClientId', (event, clientId) => {
+    const specificClientURL = `${API.URL}get/clients/${clientId}`;
+    insertInformationOnScreen(specificClientURL);
+})
 
 function createPhoneObject(telephoneObject) {
     const div = document.createElement("div");
@@ -209,7 +215,7 @@ function insertClientBasicInfomation(client) {
     creditTextBoxElement.value = client.credit_on_establishment;
 }
 
-async function insertInformationOnScreen() {
+async function insertInformationOnScreen(specificClientURL) {
     specificClientResponse = await getDB.execute(specificClientURL);
     clientInfos = specificClientResponse[1][0];
     insertClientBasicInfomation(clientInfos);
@@ -224,4 +230,4 @@ async function insertInformationOnScreen() {
         createAddressesObject(address);
     });
 }
-insertInformationOnScreen()
+

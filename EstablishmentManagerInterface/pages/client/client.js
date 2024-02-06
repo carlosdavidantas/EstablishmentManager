@@ -1,7 +1,9 @@
 const API = require("../../scripts/API.js");
 const getDB = require("../../scripts/getDB.js");
-const allClientsRoute = `${API.URL}get/clients`;
+const { ipcRenderer } = require("electron");
+
 const clientList = document.getElementById("clientList");
+const allClientsRoute = `${API.URL}get/clients`;
 
 let clients;
 let allClientsResponse;
@@ -9,7 +11,7 @@ let allClientsResponse;
 function createClientObject(name, phone, creationDate, id) {
     const div = document.createElement("div");
     div.className = "clientObject";
-    div.setAttribute("id", `clientObjectId-${id}`);
+    div.setAttribute("id", id);
 
     const nameTextLabel = document.createElement("label");
     nameTextLabel.className = "NameText";
@@ -31,8 +33,9 @@ function createClientObject(name, phone, creationDate, id) {
     div.appendChild(phoneTextLabel);
     div.appendChild(creationDateTextLabel);
 
-    nameTextLabel.addEventListener("click", (t) => {
-        console.log(t);
+    nameTextLabel.addEventListener("click", (object) => {
+        const clientClickedId = object.target.id;
+        ipcRenderer.send("openSingleClient", clientClickedId);
     });
 
     clientList.appendChild(div);

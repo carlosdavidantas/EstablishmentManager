@@ -1,5 +1,5 @@
-const clientPagePath = "../client/client.html";
+const { ipcRenderer } = require('electron');
 
-document.getElementById("Clients").addEventListener("click", () => { 
-    window.open(clientPagePath, "Clients", "frame=true,nodeIntegration=yes,contextIsolation=no");
+document.getElementById("Clients").addEventListener("click", () => {
+    ipcRenderer.send("openAllClients");
 })

@@ -4,6 +4,7 @@
     {
         private int _client_addressId;
         private string _street_name;
+        private string _district;
         private string _cep;
         private string _complement;
         private string _reference;
@@ -20,10 +21,11 @@
         public Client_address() { }
         
 
-        public Client_address(string street_name, string cep, string complement, string reference, 
+        public Client_address(string street_name, string district, string cep, string complement, string reference, 
             string number, string description)
         {
             Street_name = street_name;
+            District = district;
             Cep = cep;
             Complement = complement;
             Reference = reference;
@@ -35,6 +37,7 @@
 
         public int Client_addressId { get => _client_addressId; set => _client_addressId = value; }
         public string Street_name { get => _street_name; set => _street_name = value; }
+        public string District { get => _district; set => _district = value; }
         public string Cep { get => _cep; set => _cep = value; }
         public string Complement { get => _complement; set => _complement = value; }
         public string Reference { get => _reference; set => _reference = value; }

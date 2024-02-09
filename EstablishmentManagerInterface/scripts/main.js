@@ -5,23 +5,24 @@ const singleClientPagePath = "./pages/client/singleClientForm/singleClientForm.h
 const allClientsPagePath = "./pages/client/client.html";
 let APIExe;
 
-
-function createWindow(pathHtmlPage) {
+function createWindow(pathHtmlPage, isMaximized) {
     const window = new BrowserWindow({
-        width: 1000,
-        height: 800,
+        width: 800,
+        height: 600,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
         }
     });
+    if(isMaximized)
+        window.maximize();
     window.loadFile(pathHtmlPage);
     return window;
 }
 
 app.whenReady().then(() => {
     APIExe = API.open();
-    createWindow(loginPagePath);
+    createWindow(loginPagePath, true);
 });
 
 app.on('window-all-closed', () => {
@@ -32,11 +33,11 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on('openAllClients', () => {
-    createWindow(allClientsPagePath);
+    createWindow(allClientsPagePath, true);
 });
 
 ipcMain.on('openSingleClient', (event, clientId) => {
-    const window = createWindow(singleClientPagePath);
+    const window = createWindow(singleClientPagePath, false);
     window.webContents.on('did-finish-load', () => {
         window.webContents.send('receivedClientId', clientId);
     });

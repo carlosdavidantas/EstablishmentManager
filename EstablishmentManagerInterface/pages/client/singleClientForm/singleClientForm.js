@@ -121,11 +121,11 @@ function createAddressesObject(addressObject) {
 
     const districtTextLabel = document.createElement("label");
     districtTextLabel.className = "infoObjectLabel";
-    districtTextLabel.innerText = "Distric:";
+    districtTextLabel.innerText = "District:";
 
     const districtTextBox = document.createElement("input");
     districtTextBox.className = "objectTextBox";
-    districtTextBox.value = "Needs to be added in the backend";
+    districtTextBox.value = addressObject.district;
     districtTextBox.disabled = true;
 
     const cepTextLabel = document.createElement("label");

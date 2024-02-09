@@ -27,11 +27,11 @@ void SettingTest(AppDbContext context)
     Client_telephone son_telephone = new Client_telephone("982366157", "Telefone filho");
     son_telephone.Client = client;
 
-    Client_address primary_address = new Client_address("Rua m", "98261422", "Apartamento de 8 andares",
+    Client_address primary_address = new Client_address("Rua m", "Novo Bairro", "98261422", "Apartamento de 8 andares",
         "Esquina com a rua K", "8", "Endereço principal");
     primary_address.Client = client;
 
-    Client_address work_address = new Client_address("Rua delta", "89815543", "No shopping",
+    Client_address work_address = new Client_address("Rua delta", "Novo Bairro", "89815543", "No shopping",
         "Em frente ao mercado", "7m", "Trabalho");
     work_address.Client = client;
 

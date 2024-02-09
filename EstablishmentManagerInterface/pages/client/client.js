@@ -3,10 +3,20 @@ const getDB = require("../../scripts/getDB.js");
 const { ipcRenderer } = require("electron");
 
 const clientList = document.getElementById("clientList");
-const allClientsRoute = `${API.URL}get/clients`;
+const clientsRoute = `${API.URL}get/clients`;
+
+const searchButton = document.getElementById("searchButton");
+const searchTextbox = document.getElementById("searchText");
 
 let clients;
-let allClientsResponse;
+let searchResponse;
+
+
+function clearClientList() {
+    clientList.innerHTML = "";
+    searchResponse = null;
+    clients = null;
+}
 
 function createClientObject(name, phone, creationDate, id) {
     const div = document.createElement("div");
@@ -41,11 +51,48 @@ function createClientObject(name, phone, creationDate, id) {
     clientList.appendChild(div);
 }
 
-async function getAllClients() {
-    allClientsResponse = await getDB.execute(allClientsRoute);
-    clients = allClientsResponse[1];
-    clients.forEach((client) => {
+function loopThroughClients(clientArray) {
+    clientArray.forEach((client) => {
         createClientObject(`${client.name}`, `${client.client_telephones[0].number}`, `${client.creation_date}`, client.clientId);
     });
 }
-getAllClients();
+
+async function searchForClientOnDB(specificClient) {
+    if(specificClient != undefined){
+        clearClientList();
+        try {
+            searchResponse = await getDB.execute(`${clientsRoute}/${specificClient}`);
+            clients = searchResponse[1];
+            loopThroughClients(clients);
+        }catch(error) {
+            console.log(error);
+        }
+    }
+    else{
+        clearClientList();
+        try {
+            searchResponse = await getDB.execute(clientsRoute);
+            clients = searchResponse[1];
+            loopThroughClients(clients);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+}
+searchForClientOnDB();
+
+searchTextbox.addEventListener("keydown", async (keydownEvent) => {
+    if(keydownEvent.key === "Enter"){
+        clearClientList();
+
+        const searchInput = searchTextbox.value;
+        searchForClientOnDB(searchInput);
+    }
+});
+
+searchButton.addEventListener("click", async () => {
+    clearClientList();
+
+    const searchInput = searchTextbox.value;
+    searchForClientOnDB(searchInput);
+});

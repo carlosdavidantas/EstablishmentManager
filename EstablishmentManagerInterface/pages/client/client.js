@@ -57,15 +57,36 @@ function loopThroughClients(clientArray) {
     });
 }
 
-async function searchForClientOnDB(specificClient) {
-    if(specificClient != undefined){
-        clearClientList();
+async function searchForClientOnDB(specificClientInfo) {
+    if(specificClientInfo != undefined){
         try {
-            searchResponse = await getDB.execute(`${clientsRoute}/${specificClient}`);
+            clearClientList();
+            searchResponse = await getDB.execute(`${clientsRoute}/${specificClientInfo}`);
             clients = searchResponse[1];
             loopThroughClients(clients);
+
         }catch(error) {
-            console.log(error);
+            clearClientList();
+            searchResponse = await getDB.execute(clientsRoute);
+            clients = searchResponse[1];
+            let newClientSearch = [];
+            clients.forEach((client) => {
+                client.client_telephones.forEach((telephone) => {
+                    if(telephone.number === specificClientInfo) {
+                        newClientSearch.push(client);
+                        return;
+                    }
+                });
+
+                client.client_addresses.forEach((address) => {
+                    if(address.cep === specificClientInfo || address.distric === specificClientInfo
+                        || address.street_name === specificClientInfo) {
+                            newClientSearch.push(client);
+                            return;
+                        }
+                });
+            });
+            loopThroughClients(newClientSearch);
         }
     }
     else{

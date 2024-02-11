@@ -5,6 +5,7 @@ const { ipcRenderer } = require('electron'); // ipcrenderer is needed to receive
 
 const elementPhoneList = document.getElementById("phonesList");
 const elementAddressesList = document.getElementById("addressesList");
+const clientInfosEditButton = document.getElementById("clientInfosEditButton");
 
 let nameTextBoxElement = document.getElementById("nameText");
 let cpfTextBoxElement = document.getElementById("cpfText");
@@ -20,9 +21,11 @@ let clientInfos;
 let phonesList;
 let addressesList;
 
+let thisClientId;
 
 ipcRenderer.on('receivedClientId', (event, clientId) => {
     const specificClientURL = `${API.URL}get/clients/${clientId}`;
+    thisClientId = clientId;
     insertInformationOnScreen(specificClientURL);
 })
 
@@ -273,6 +276,7 @@ function createAddressesObject(addressObject) {
 }
 
 function insertClientBasicInfomation(client) {
+    console.log(client);
     nameTextBoxElement.value = client.name;
     cpfTextBoxElement.value = client.cpf;
     birthdayTextBoxElement.value = client.birthday;
@@ -299,3 +303,39 @@ async function insertInformationOnScreen(specificClientURL) {
     });
 }
 
+function clientFieldsDisabled (boolValue) {
+    nameTextBoxElement.disabled = boolValue;
+    cpfTextBoxElement.disabled = boolValue;
+    birthdayTextBoxElement.disabled = boolValue;
+    rgTextBoxElement.disabled = boolValue;
+    debitTextBoxElement.disabled = boolValue;
+    creditTextBoxElement.disabled = boolValue;
+}
+
+clientInfosEditButton.addEventListener("click", () => {
+    if(clientInfosEditButton.innerHTML === "Edit") {
+        clientInfosEditButton.innerText = "Save";
+        clientFieldsDisabled(false);
+        return;
+    }
+
+    if(clientInfosEditButton.innerHTML === "Save") {
+        try {
+            let newClient = {
+                birthday: birthdayTextBoxElement.value,
+                cpf: cpfTextBoxElement.value,
+                credit_on_establishment: creditTextBoxElement.value,
+                debit_on_establishment: debitTextBoxElement.value,
+                name: nameTextBoxElement.value,
+                rg: rgTextBoxElement.value
+            }
+            putDB.execute(`${API.URL}put/clients/${thisClientId}`, newClient);
+        }
+        catch(error) {
+            console.log("ERROR Occurred - " + error);
+        }
+
+        clientInfosEditButton.innerText = "Edit";
+        clientFieldsDisabled(true);
+    }
+});

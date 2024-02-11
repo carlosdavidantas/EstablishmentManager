@@ -1,11 +1,14 @@
 const API = require("../../../scripts/API.js");
 const getDB = require("../../../scripts/getDB.js");
 const putDB = require("../../../scripts/putDB.js");
-const { ipcRenderer } = require('electron'); // ipcrenderer is needed to receive the client id from the previous page.
+const deleteDB = require("../../../scripts/deleteDB.js");
+const { ipcRenderer } = require("electron"); // ipcrenderer is needed to receive the client id from the previous page.
+
 
 const elementPhoneList = document.getElementById("phonesList");
 const elementAddressesList = document.getElementById("addressesList");
 const clientInfosEditButton = document.getElementById("clientInfosEditButton");
+const clientDeleteButton = document.getElementById("clientDeleteButton");
 
 let nameTextBoxElement = document.getElementById("nameText");
 let cpfTextBoxElement = document.getElementById("cpfText");
@@ -123,7 +126,6 @@ function createPhoneObject(telephoneObject) {
 }
 
 function createAddressesObject(addressObject) {
-    console.log(addressObject);
     const div = document.createElement("div");
     div.className = "addressObject";
     div.setAttribute("id", `addressObjectId-${addressObject.client_addressId}`);
@@ -276,7 +278,6 @@ function createAddressesObject(addressObject) {
 }
 
 function insertClientBasicInfomation(client) {
-    console.log(client);
     nameTextBoxElement.value = client.name;
     cpfTextBoxElement.value = client.cpf;
     birthdayTextBoxElement.value = client.birthday;
@@ -337,5 +338,20 @@ clientInfosEditButton.addEventListener("click", () => {
 
         clientInfosEditButton.innerText = "Edit";
         clientFieldsDisabled(true);
+    }
+});
+
+function deleteClient() {
+    deleteDB.execute(`${API.URL}delete/clients/${thisClientId}`);
+    window.close();
+}
+
+clientDeleteButton.addEventListener("click", async () => {
+    const response = await ipcRenderer.invoke("showClientDeleteDialog");
+    if (response ===  0) {
+        // User clicked Yes
+        deleteClient();
+    } else {
+        // User clicked No
     }
 });

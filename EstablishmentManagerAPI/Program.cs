@@ -93,6 +93,24 @@ app.MapPost("v1/post/clients", async (Client sentClient, AppDbContext context) =
     return Results.Created($"v1/post/clients/{sentClient.ClientId}", sentClient);
 });
 
+app.MapPut("v1/put/clients/{id}", async (int id, Client inputClient, AppDbContext context) =>
+{
+    var client = await context.Clients.FindAsync(id);
+    if (client == null)
+        return Results.NotFound();
+
+    client.Birthday = inputClient.Birthday;
+    client.Cpf = inputClient.Cpf;
+    client.Credit_on_establishment = inputClient.Credit_on_establishment;
+    client.Debit_on_establishment = inputClient.Debit_on_establishment;
+    client.Modified_date = DateOnly.FromDateTime(DateTime.Today);
+    client.Name = inputClient.Name;
+    client.Rg = inputClient.Rg;
+
+    await context.SaveChangesAsync();
+    return Results.Ok();
+});
+
 //Telephones routes.
 //Return every telephones with a client object.
 app.MapGet("v1/get/telephones", async (AppDbContext context) =>

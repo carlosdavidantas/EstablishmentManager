@@ -1,7 +1,9 @@
 using EstablishmentManagerAPI.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Models.ClientRelated;
 using Models.UserRelated;
+using System;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -93,7 +95,7 @@ app.MapPost("v1/post/clients", async (Client sentClient, AppDbContext context) =
 
 //Telephones routes.
 //Return every telephones with a client object.
-app.MapGet("/v1/get/telephones", async (AppDbContext context) =>
+app.MapGet("v1/get/telephones", async (AppDbContext context) =>
 {
     var telephonesFoundList = await context.Client_Telephones
         .Include(telephone => telephone.Client).ToListAsync();
@@ -106,7 +108,7 @@ app.MapGet("/v1/get/telephones", async (AppDbContext context) =>
 });
 
 //Search by a telephone prop and return it with a client object.
-app.MapGet("/v1/get/telephones/{search}", async (string search, AppDbContext context) =>
+app.MapGet("v1/get/telephones/{search}", async (string search, AppDbContext context) =>
 {
     int idResult;
     bool convertId = int.TryParse(search, out idResult);
@@ -123,9 +125,24 @@ app.MapGet("/v1/get/telephones/{search}", async (string search, AppDbContext con
     return Results.Ok(telephonesFoundList);
 });
 
+//Update a specific telephone by the id of it
+app.MapPut("v1/put/telephone/{id}", async (int id, Client_telephone inputTelephone, AppDbContext context) =>
+{
+    var telephone = await context.Client_Telephones.FindAsync(id);
+    if (telephone == null)
+        return Results.NotFound();
+
+    telephone.Description = inputTelephone.Description;
+    telephone.Number = inputTelephone.Number;
+    telephone.Modified_date = DateOnly.FromDateTime(DateTime.Today);
+
+    await context.SaveChangesAsync();
+    return Results.Ok();
+});
+
 //Addresses routes
 //Return every address with a client object.
-app.MapGet("/v1/get/addresses", async (AppDbContext context) =>
+app.MapGet("v1/get/addresses", async (AppDbContext context) =>
 {
     var addressFoundList = await context.Client_Addresses
         .Include(address => address.Client).ToListAsync();
@@ -138,7 +155,7 @@ app.MapGet("/v1/get/addresses", async (AppDbContext context) =>
 });
 
 //Search by a address prop and return it with a client object.
-app.MapGet("/v1/get/addresses/{search}", async (string search, AppDbContext context) =>
+app.MapGet("v1/get/addresses/{search}", async (string search, AppDbContext context) =>
 {
     int idResult;
     bool convertId = int.TryParse(search, out idResult);
@@ -157,7 +174,7 @@ app.MapGet("/v1/get/addresses/{search}", async (string search, AppDbContext cont
 
 //Group of products routes
 //Return every group of product with the products.
-app.MapGet("/v1/get/group-of-product/", async (AppDbContext context) =>
+app.MapGet("v1/get/group-of-product/", async (AppDbContext context) =>
 {
     var groupOfProductFoundList = await context.Group_of_products
     .Include(groupOfProduct => groupOfProduct.Products)
@@ -172,7 +189,7 @@ app.MapGet("/v1/get/group-of-product/", async (AppDbContext context) =>
 });
 
 //Search by a group of product prop and return with products object.
-app.MapGet("/v1/get/group-of-product/{search}", async (string search, AppDbContext context) =>
+app.MapGet("v1/get/group-of-product/{search}", async (string search, AppDbContext context) =>
 {
     int idResult;
     bool convertId = int.TryParse(search, out idResult);
@@ -191,7 +208,7 @@ app.MapGet("/v1/get/group-of-product/{search}", async (string search, AppDbConte
 
 //Products route
 //Return every product with addons and observations options.
-app.MapGet("/v1/get/products/", async (AppDbContext context) =>
+app.MapGet("v1/get/products/", async (AppDbContext context) =>
 {
     var productFoundList = await context.Products
     .Include(product => product.Product_addons)
@@ -207,7 +224,7 @@ app.MapGet("/v1/get/products/", async (AppDbContext context) =>
 });
 
 //Search by a product prop and return it with addons and observations options.
-app.MapGet("/v1/get/products/{search}", async (string search, AppDbContext context) =>
+app.MapGet("v1/get/products/{search}", async (string search, AppDbContext context) =>
 {
     int idResult;
     bool convertId = int.TryParse(search, out idResult);

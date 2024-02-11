@@ -172,6 +172,25 @@ app.MapGet("v1/get/addresses/{search}", async (string search, AppDbContext conte
     return Results.Ok(addressesFoundList);
 });
 
+app.MapPut("v1/put/addresses/{id}", async (int id, Client_address  inputAddress, AppDbContext context) =>
+{
+    var address = await context.Client_Addresses.FindAsync(id);
+    if (address == null)
+        return Results.NotFound();
+
+    address.Cep = inputAddress.Cep;
+    address.Complement = inputAddress.Complement;
+    address.Description = inputAddress.Description;
+    address.District = inputAddress.District;
+    address.Number = inputAddress.Number;
+    address.Reference = inputAddress.Reference;
+    address.Street_name = inputAddress.Street_name;
+    address.Modified_date = DateOnly.FromDateTime(DateTime.Today);
+
+    await context.SaveChangesAsync();
+    return Results.Ok();
+});
+
 //Group of products routes
 //Return every group of product with the products.
 app.MapGet("v1/get/group-of-product/", async (AppDbContext context) =>

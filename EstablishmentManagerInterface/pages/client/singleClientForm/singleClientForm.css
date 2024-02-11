@@ -145,7 +145,7 @@ body {
     align-items: center;
 }
 
-.bottomRectangle {
+.bottomDeleteButton {
     position: absolute;
     background-color: rgb(225, 225, 225);
     width: 10vw;

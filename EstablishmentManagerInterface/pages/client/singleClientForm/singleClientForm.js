@@ -120,6 +120,7 @@ function createPhoneObject(telephoneObject) {
 }
 
 function createAddressesObject(addressObject) {
+    console.log(addressObject);
     const div = document.createElement("div");
     div.className = "addressObject";
     div.setAttribute("id", `addressObjectId-${addressObject.client_addressId}`);
@@ -209,8 +210,43 @@ function createAddressesObject(addressObject) {
     editButton.className = "editObjectButton";
     editButton.innerText = "Edit";
 
+    function fieldsDisabled (boolValue) {
+        streetNameTextBox.disabled = boolValue;
+        complementTextBox.disabled = boolValue;
+        referenceTextBox.disabled = boolValue;
+        districtTextBox.disabled = boolValue;
+        cepTextBox.disabled = boolValue;
+        numberTextBox.disabled = boolValue;
+        descriptionTextBox.disabled = boolValue;
+    }
+
     editButton.addEventListener("click", (t) => {
-        console.log(t);
+        if(editButton.innerHTML === "Edit") {
+            editButton.innerText = "Save";
+            fieldsDisabled(false);
+            return;
+        }
+
+        if(editButton.innerHTML === "Save") {
+            try {
+                let newAddress = {
+                    cep: cepTextBox.value,
+                    complement: complementTextBox.value,
+                    description: descriptionTextBox.value,
+                    district: districtTextBox.value,
+                    number: numberTextBox.value,
+                    reference: referenceTextBox.value,
+                    street_name: streetNameTextBox.value
+                }
+                putDB.execute(`${API.URL}put/addresses/${addressObject.client_addressId}`, newAddress);
+            }
+            catch(error) {
+                console.log("ERROR Occurred - " + error);
+            }
+
+            editButton.innerText = "Edit";
+            fieldsDisabled(true);
+        }
     });
 
     div.appendChild(streetNameTextLabel);

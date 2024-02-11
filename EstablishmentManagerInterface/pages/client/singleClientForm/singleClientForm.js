@@ -1,5 +1,6 @@
 const API = require("../../../scripts/API.js");
 const getDB = require("../../../scripts/getDB.js");
+const putDB = require("../../../scripts/putDB.js");
 const { ipcRenderer } = require('electron'); // ipcrenderer is needed to receive the client id from the previous page.
 
 const elementPhoneList = document.getElementById("phonesList");
@@ -33,11 +34,13 @@ function createPhoneObject(telephoneObject) {
     const descriptionTextLabel = document.createElement("label");
     descriptionTextLabel.className = "infoObjectLabel";
     descriptionTextLabel.innerText = "Description:";
+    
 
     const descriptionTextBox = document.createElement("input");
     descriptionTextBox.className = "objectTextBox";
     descriptionTextBox.value = telephoneObject.description;
     descriptionTextBox.disabled = true;
+    descriptionTextBox.setAttribute("id", `descriptionTextBox-${telephoneObject.client_telephoneId}`);
 
     const numberTextLabel = document.createElement("label");
     numberTextLabel.className = "infoObjectLabel";
@@ -47,6 +50,8 @@ function createPhoneObject(telephoneObject) {
     numberTextBox.className = "objectTextBox";
     numberTextBox.value = telephoneObject.number;
     numberTextBox.disabled = true;
+    numberTextBox.setAttribute("id", `numberTextBox-${telephoneObject.client_telephoneId}`);
+    
 
     const creationDateTextLabel = document.createElement("label");
     creationDateTextLabel.className = "infoObjectLabel";
@@ -60,18 +65,45 @@ function createPhoneObject(telephoneObject) {
     const modifiedDateTextLabel = document.createElement("label");
     modifiedDateTextLabel.className = "infoObjectLabel";
     modifiedDateTextLabel.innerText = "Modified date:";
-
+    
     const modifiedDateTextBox = document.createElement("input");
     modifiedDateTextBox.className = "objectTextBox";
     modifiedDateTextBox.value = telephoneObject.modified_date;
     modifiedDateTextBox.disabled = true;
+    modifiedDateTextBox.setAttribute("id", `modifiedDateTextBox-${telephoneObject.client_telephoneId}`);
 
     const editButton = document.createElement("button");
     editButton.className = "editObjectButton";
+    editButton.id = `${telephoneObject.clientId}`;
     editButton.innerText = "Edit";
 
+    function fieldsDisabled (boolValue) {
+        descriptionTextBox.disabled = boolValue;
+        numberTextBox.disabled = boolValue;
+    }
+
     editButton.addEventListener("click", (t) => {
-        console.log(t);
+        if(editButton.innerHTML === "Edit") {
+            editButton.innerText = "Save";
+            fieldsDisabled(false);
+            return;
+        }
+
+        if(editButton.innerHTML === "Save") {
+            try {
+                let newTelephone = {
+                    number: numberTextBox.value,
+                    description: descriptionTextBox.value,
+                }
+                putDB.execute(`${API.URL}put/telephone/${telephoneObject.client_telephoneId}`, newTelephone);
+            }
+            catch(error) {
+                console.log("ERROR Occurred - " + error);
+            }
+
+            editButton.innerText = "Edit";
+            fieldsDisabled(true);
+        }
     });
 
     div.appendChild(descriptionTextLabel);

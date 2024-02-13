@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const API = require("./API.js");
 const loginPagePath = "./pages/login/login.html";
-const singleClientPagePath = "./pages/client/singleClientForm/singleClientForm.html";
+const singleClientPagePath = "./pages/client/singleClient/singleClient.html";
 const allClientsPagePath = "./pages/client/clients.html";
 const createClientPath = "./pages/client/createClient/createClient.html";
 let APIExe;

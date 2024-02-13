@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../../reset.css" />
+    <link rel="stylesheet" href="createClient.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://localhost:5000" />
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self' http://localhost:5000" />
+    <title>Client</title>
+</head>
+
+<body>
+    <section class="background">
+        <section class="topRectangle"></section>
+        <section class="infosSpace">
+            <label class="textLabel">Name:</label>
+            <input type="text" class="textBox" id="nameText"></input>
+            <label class="textLabel">CPF:</label>
+            <input type="text" class="textBox" id="cpfText"></label>
+            <label class="textLabel">Birthday:</label>
+            <input type="text" class="textBox" id="birthdayText"></input>
+            <label class="textLabel">RG:</label>
+            <input type="text" class="textBox" id="rgText"></input>
+            <label class="textLabel">Debit:</label>
+            <input type="text" class="textBox" id="debitText"></input>
+            <label class="textLabel">Credit:</label>
+            <input type="text" class="textBox" id="creditText"></input>
+        </section>
+        <section class="phoneSpace">
+            <label class="textLabel">Phone numbers:</label>
+            <button class="addNewObjects" id="addNewTelephoneObject">➕</button>
+            <ul class="phonesList" id="phonesList">
+            </ul>
+        </section>
+        <section class="addressesSpace">
+            <label class="textLabel">Addresses:</label>
+            <button class="addNewObjects" id="addNewAddressObject">➕</button>
+            <ul class="addressesList" id="addressesList">
+            </ul>
+        </section>
+        <button class="bottomSaveButton" id="clientSaveButton">Save</button>
+    </section>
+    <script src="createClient.js"></script>
+</body>
+
+</html>

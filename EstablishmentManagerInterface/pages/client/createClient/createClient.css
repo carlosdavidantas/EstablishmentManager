@@ -1,0 +1,152 @@
+body {
+    background-color: rgb(225, 225, 225);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    background-color: white;
+    width: 96.5vw;
+    height: 94vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.topRectangle {
+    position: absolute;
+    background-color: rgb(225, 225, 225);
+    width: 10vw;
+    height: 5vh;
+    border-color: transparent;
+    border-radius: 5px;
+    margin-bottom: 94vh;
+}
+
+.infosSpace {
+    width: 45vw;
+    height: 83vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.textLabel {
+    font-family: 'Lucida Sans';
+    font-size: large;
+}
+
+.textBox {
+    font-family: 'Lucida Sans';
+    font-size: x-large;
+    background-color: rgb(225, 225, 225);
+    border-color: transparent;
+}
+
+.phoneSpace {
+    width: 45vw;
+    height: 38.73vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.phonesList {
+    margin-top: 1vh;
+    width: 45vw;
+    height: 34.73vh;
+    border-radius: 10px;
+    background-color: rgb(225, 225, 225);
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.addNewObjects {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.phoneObject {
+    background-color: white;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 40vw;
+    height: 31vh;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.infoObjectLabel {
+    font-family: 'Lucida Sans';
+    font-size: medium;
+}
+
+.objectTextBox {
+    font-family: 'Lucida Sans';
+    font-size: medium;
+    width: 36vw;
+    background-color: rgb(225, 225, 225);
+    border-color: transparent;
+    text-align: center;
+}
+
+.addressesSpace {
+    width: 45vw;
+    height: 38.73vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.addressesList {
+    margin-top: 1vh;
+    width: 45vw;
+    height: 34.73vh;
+    border-radius: 10px;
+    background-color: rgb(225, 225, 225);
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.addressObject {
+    background-color: white;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 40vw;
+    height: 72vh;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.bottomSaveButton {
+    position: absolute;
+    background-color: rgb(225, 225, 225);
+    width: 10vw;
+    height: 5vh;
+    border-color: transparent;
+    border-radius: 5px;
+    margin-top: 94vh;
+}

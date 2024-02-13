@@ -2,7 +2,8 @@ const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const API = require("./API.js");
 const loginPagePath = "./pages/login/login.html";
 const singleClientPagePath = "./pages/client/singleClientForm/singleClientForm.html";
-const allClientsPagePath = "./pages/client/client.html";
+const allClientsPagePath = "./pages/client/clients.html";
+const createClientPath = "./pages/client/createClient/createClient.html";
 let APIExe;
 
 function createWindow(pathHtmlPage, isMaximized) {
@@ -53,4 +54,8 @@ ipcMain.handle("showClientDeleteDialog", async () => {
         message: 'Are you sure you want to delete this client?'
     });
     return result.response;
+});
+
+ipcMain.on("createNewClient", () => {
+    const window = createWindow(createClientPath, true);
 });

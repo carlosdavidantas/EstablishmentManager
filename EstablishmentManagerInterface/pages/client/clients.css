@@ -26,7 +26,7 @@ body {
     border-radius: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -43,14 +43,22 @@ body {
     margin-left: 1vw;
     background-color: rgb(225, 225, 225);
     height: 4vh;
-    width: 90vw;
-    border-width: 0px;
+    width: 80vw;
+    border-width: 2px;
     border-radius: 10px;
     font-size: 20px;
     outline-width: 0px;
-    /**/
+    border-color: transparent;
     font-family: 'Lucida Sans';
     font-size: 3vh;
+}
+
+.createNewClientButton {
+    background-color: transparent;
+    border-width: 0px;
+    height: 4vh;
+    width: 6vw;
+    font-size: 2vh;
 }
 
 .clientObjects {

@@ -7,6 +7,7 @@ const clientsRoute = `${API.URL}get/clients`;
 
 const searchButton = document.getElementById("searchButton");
 const searchTextbox = document.getElementById("searchText");
+const createNewClientButton = document.getElementById("createNewClientButton");
 
 let clients;
 let searchResponse;
@@ -116,4 +117,8 @@ searchButton.addEventListener("click", async () => {
 
     const searchInput = searchTextbox.value;
     searchForClientOnDB(searchInput);
+});
+
+createNewClientButton.addEventListener("click", () => {
+    ipcRenderer.send("createNewClient");
 });

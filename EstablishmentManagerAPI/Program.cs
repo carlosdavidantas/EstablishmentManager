@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Models.ClientRelated;
 using Models.UserRelated;
 using System;
+using System.Net;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -88,6 +89,24 @@ app.MapGet("/v1/get/clients/{search}", async (string search, AppDbContext contex
 
 app.MapPost("v1/post/clients", async (Client sentClient, AppDbContext context) =>
 {
+    Console.WriteLine("My client - " + sentClient);
+    sentClient.Creation_date = DateOnly.FromDateTime(DateTime.Today);
+    sentClient.Modified_date = DateOnly.FromDateTime(DateTime.Today);
+
+    foreach (var address in sentClient.Client_addresses)
+    {
+        Console.WriteLine("Address - " + address);
+        address.Creation_date = DateOnly.FromDateTime(DateTime.Today);
+        address.Modified_date = DateOnly.FromDateTime(DateTime.Today);
+    }
+
+    foreach (var telephone in sentClient.Client_telephones)
+    {
+        Console.WriteLine("Telephone - " + telephone);
+        telephone.Creation_date = DateOnly.FromDateTime(DateTime.Today);
+        telephone.Modified_date = DateOnly.FromDateTime(DateTime.Today);
+    }
+
     await context.Clients.AddAsync(sentClient);
     await context.SaveChangesAsync();
     return Results.Created($"v1/post/clients/{sentClient.ClientId}", sentClient);

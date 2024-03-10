@@ -26,7 +26,7 @@ let addressesList;
 
 let thisClientId;
 
-ipcRenderer.on('receivedClientId', (event, clientId) => {
+ipcRenderer.on("receivedClientId", (event, clientId) => {
     const specificClientURL = `${API.URL}get/clients/${clientId}`;
     thisClientId = clientId;
     insertInformationOnScreen(specificClientURL);
@@ -109,6 +109,9 @@ function createPhoneObject(telephoneObject) {
 
             editButton.innerText = "Edit";
             fieldsDisabled(true);
+            setTimeout(() => {
+                ipcRenderer.send("updateAllClients");
+            }, 100);
         }
     });
 
@@ -251,6 +254,9 @@ function createAddressesObject(addressObject) {
 
             editButton.innerText = "Edit";
             fieldsDisabled(true);
+            setTimeout(() => {
+                ipcRenderer.send("updateAllClients");
+            }, 100); 
         }
     });
 
@@ -338,12 +344,17 @@ clientInfosEditButton.addEventListener("click", () => {
 
         clientInfosEditButton.innerText = "Edit";
         clientFieldsDisabled(true);
+        setTimeout(() => {
+            ipcRenderer.send("updateAllClients");
+        }, 100);
     }
 });
 
 function deleteClient() {
     deleteDB.execute(`${API.URL}delete/clients/${thisClientId}`);
-    window.close();
+    setTimeout(() => {
+        ipcRenderer.send("updateAllClients");
+    }, 100);
 }
 
 clientDeleteButton.addEventListener("click", async () => {
@@ -351,7 +362,11 @@ clientDeleteButton.addEventListener("click", async () => {
     if (response ===  0) {
         // User clicked Yes
         deleteClient();
+        setTimeout(() => {
+            window.close();
+        }, 100);
     } else {
-        // User clicked No
+        // Do nothing
     }
 });
+

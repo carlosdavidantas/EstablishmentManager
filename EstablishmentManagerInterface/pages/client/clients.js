@@ -58,6 +58,13 @@ function loopThroughClients(clientArray) {
     });
 }
 
+async function updateClientList() {
+    clearClientList();
+    searchResponse = await getDB.execute(`${clientsRoute}`);
+    clients = searchResponse[1];
+    loopThroughClients(clients);
+}
+
 async function searchForClientOnDB(specificClientInfo) {
     if(specificClientInfo != undefined){
         try {
@@ -97,7 +104,7 @@ async function searchForClientOnDB(specificClientInfo) {
             clients = searchResponse[1];
             loopThroughClients(clients);
         } catch(error) {
-            console.log(error);
+            console.log("No clients found");
         }
     }
 }
@@ -120,5 +127,9 @@ searchButton.addEventListener("click", async () => {
 });
 
 createNewClientButton.addEventListener("click", () => {
-    ipcRenderer.send("createNewClient");
+    ipcRenderer.send("createNewClientWindow");
 });
+
+ipcRenderer.on("updateAllClients", () => {
+    updateClientList();
+})

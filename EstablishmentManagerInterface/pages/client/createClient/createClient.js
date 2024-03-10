@@ -1,5 +1,6 @@
 const API = require("../../../scripts/API.js");
 const postDB = require("../../../scripts/postDB.js");
+const { ipcRenderer } = require("electron");
 
 const elementPhoneList = document.getElementById("phonesList");
 const addNewTelephoneObject = document.getElementById("addNewTelephoneObject");
@@ -196,5 +197,19 @@ function createClientObject() {
 
 clientSaveButton.addEventListener("click", async () => {
     const client = createClientObject();
-    postDB.execute(`${API.URL}post/clients`, client);
+    const result = await postDB.execute(`${API.URL}post/clients`, client);
+    if(result === true) {
+        setTimeout(() => {
+            ipcRenderer.send("updateAllClients");
+            window.close();
+        }, 100);
+    }
+    else {
+        const response = await ipcRenderer.invoke("errorWhileCreatingTheClient");
+        if (response ===  0) {
+            //Do nothing
+        } else {
+            window.close();
+        }
+    }
 });

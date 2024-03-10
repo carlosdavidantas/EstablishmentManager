@@ -6,7 +6,9 @@ const allClientsPagePath = "./pages/client/clients.html";
 const createClientPath = "./pages/client/createClient/createClient.html";
 let APIExe;
 
-function createWindow(pathHtmlPage, isMaximized) {
+let windowsRegistry = {};
+
+function createWindow(pathHtmlPage, isMaximized, identifier) {
     const window = new BrowserWindow({
         width: 800,
         height: 600,
@@ -18,6 +20,8 @@ function createWindow(pathHtmlPage, isMaximized) {
     if(isMaximized)
         window.maximize();
     window.loadFile(pathHtmlPage);
+    if(identifier !== "")
+        windowsRegistry[identifier] = window;
     return window;
 }
 
@@ -34,11 +38,11 @@ app.on("window-all-closed", () => {
 });
 
 ipcMain.on("openAllClients", () => {
-    createWindow(allClientsPagePath, true);
+    createWindow(allClientsPagePath, true, "allClients");
 });
 
 ipcMain.on("openSingleClient", (event, clientId) => {
-    const window = createWindow(singleClientPagePath, false);
+    const window = createWindow(singleClientPagePath, false, "singleClient");
     window.webContents.on("did-finish-load", () => {
         window.webContents.send("receivedClientId", clientId);
     });
@@ -56,6 +60,24 @@ ipcMain.handle("showClientDeleteDialog", async () => {
     return result.response;
 });
 
-ipcMain.on("createNewClient", () => {
-    const window = createWindow(createClientPath, true);
+ipcMain.on("createNewClientWindow", () => {
+    createWindow(createClientPath, true, "createNewClient");
 });
+
+ipcMain.handle("errorWhileCreatingTheClient", async () => {
+    const result = await dialog.showMessageBox({
+        type: 'warning',
+        buttons: ['Yes', 'No'],
+        defaultId:  1,
+        cancelId:  1,
+        title: 'Error while creating the client',
+        message: 'Do you want to try again?'
+    });
+    return result.response;
+});
+
+ipcMain.on("updateAllClients", () => {
+    console.log("Executing");
+    windowsRegistry["allClients"].webContents.send("updateAllClients");
+});
+

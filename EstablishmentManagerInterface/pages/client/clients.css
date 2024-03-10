@@ -67,6 +67,7 @@ body {
     width: 96.5vw;
     height: 82vh;
     border-radius: 10px;
+    
 }
 
 ul {
@@ -76,14 +77,66 @@ ul {
     overflow-y: scroll;
 }
 
+.infoClientsName {
+    background-color: transparent;
+    width: 95.45vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textSpace {
+    background-color: transparent;
+    width: 92.3vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.infoClientsTextName {
+    background-color: transparent;
+    font-size: 1.5vw;
+    width: 65vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-family: 'Lucida Sans';
+}
+
+.infoClientsTextPhoneNumber {
+    background-color: transparent;
+    font-size: 1.5vw;
+    width: 12vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-family: 'Lucida Sans';
+}
+
+.infoClientsTextCreationDate {
+    background-color: transparent;
+    font-size: 1.5vw;
+    width: 10vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-family: 'Lucida Sans';
+}
+
 .clientList {
     margin-top: 1vh;
     background-color: white;
     width: 96.5vw;
     height: 80vh;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start ;
     align-items: center;
     flex-wrap: wrap;
 }

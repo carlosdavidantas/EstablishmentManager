@@ -181,8 +181,13 @@ function createClientObject() {
         clientTelephonesArray.push(telephone);
     }
 
+    const d = birthdayTextBoxElement.value.slice(0, 2);
+    const m = birthdayTextBoxElement.value.slice(3, 5);
+    const y = birthdayTextBoxElement.value.slice(6, 10);
+    const bithdayDateFomatted = `${y}-${m}-${d}`;
+    
     const client = {
-        birthday: birthdayTextBoxElement.value,
+        birthday: bithdayDateFomatted,
         client_addresses: clientAddressesArray,
         client_telephones: clientTelephonesArray,
         cpf: cpfTextBoxElement.value,

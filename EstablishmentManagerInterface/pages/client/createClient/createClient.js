@@ -104,7 +104,7 @@ function createAddressesObject() {
     const cepTextBox = document.createElement("input");
     cepTextBox.className = "objectTextBox";
     cepTextBox.setAttribute("id", `addressCepTextBox-${addressesObjectCount}`);
-    cepTextBox.maxLength = "10";
+    cepTextBox.maxLength = "9";
     cepTextBox.placeholder = "00000-000";
 
     const numberTextLabel = document.createElement("label");

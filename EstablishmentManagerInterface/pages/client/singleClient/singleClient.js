@@ -50,6 +50,8 @@ function createPhoneObject(telephoneObject) {
     descriptionTextBox.value = telephoneObject.description;
     descriptionTextBox.disabled = true;
     descriptionTextBox.setAttribute("id", `descriptionTextBox-${telephoneObject.client_telephoneId}`);
+    descriptionTextBox.placeholder = "Principal";
+    descriptionTextBox.maxLength = "100";
 
     const numberTextLabel = document.createElement("label");
     numberTextLabel.className = "infoObjectLabel";
@@ -59,9 +61,9 @@ function createPhoneObject(telephoneObject) {
     numberTextBox.className = "objectTextBox";
     numberTextBox.value = telephoneObject.number;
     numberTextBox.disabled = true;
+    numberTextBox.maxLength = "13";
     numberTextBox.setAttribute("id", `numberTextBox-${telephoneObject.client_telephoneId}`);
     
-
     const creationDateTextLabel = document.createElement("label");
     creationDateTextLabel.className = "infoObjectLabel";
     creationDateTextLabel.innerText = "Creation date:";
@@ -144,6 +146,7 @@ function createAddressesObject(addressObject) {
     streetNameTextBox.className = "objectTextBox";
     streetNameTextBox.value = addressObject.street_name;
     streetNameTextBox.disabled = true;
+    streetNameTextBox.maxLength = "100";
 
     const complementTextLabel = document.createElement("label");
     complementTextLabel.className = "infoObjectLabel";
@@ -153,6 +156,7 @@ function createAddressesObject(addressObject) {
     complementTextBox.className = "objectTextBox";
     complementTextBox.value = addressObject.complement;
     complementTextBox.disabled = true;
+    complementTextBox.maxLength = "100";
 
     const referenceTextLabel = document.createElement("label");
     referenceTextLabel.className = "infoObjectLabel";
@@ -162,6 +166,7 @@ function createAddressesObject(addressObject) {
     referenceTextBox.className = "objectTextBox";
     referenceTextBox.value = addressObject.reference;
     referenceTextBox.disabled = true;
+    referenceTextBox.maxLength = "100";
 
     const districtTextLabel = document.createElement("label");
     districtTextLabel.className = "infoObjectLabel";
@@ -171,15 +176,18 @@ function createAddressesObject(addressObject) {
     districtTextBox.className = "objectTextBox";
     districtTextBox.value = addressObject.district;
     districtTextBox.disabled = true;
+    districtTextBox.maxLength = "50";
 
     const cepTextLabel = document.createElement("label");
     cepTextLabel.className = "infoObjectLabel";
     cepTextLabel.innerText = "CEP:";
-
+    
     const cepTextBox = document.createElement("input");
     cepTextBox.className = "objectTextBox";
     cepTextBox.value = addressObject.cep;
     cepTextBox.disabled = true;
+    cepTextBox.maxLength = "9";
+    cepTextBox.placeholder = "00000-000";
 
     const numberTextLabel = document.createElement("label");
     numberTextLabel.className = "infoObjectLabel";
@@ -189,6 +197,7 @@ function createAddressesObject(addressObject) {
     numberTextBox.className = "objectTextBox";
     numberTextBox.value = addressObject.number;
     numberTextBox.disabled = true;
+    numberTextBox.maxLength = "50";
 
     const descriptionTextLabel = document.createElement("label");
     descriptionTextLabel.className = "infoObjectLabel";
@@ -198,6 +207,8 @@ function createAddressesObject(addressObject) {
     descriptionTextBox.className = "objectTextBox";
     descriptionTextBox.value = addressObject.description;
     descriptionTextBox.disabled = true;
+    descriptionTextBox.maxLength = "100";
+    descriptionTextBox.placeholder = "Principal";
 
     const creationDateTextLabel = document.createElement("label");
     creationDateTextLabel.className = "infoObjectLabel";
@@ -261,6 +272,15 @@ function createAddressesObject(addressObject) {
                 ipcRenderer.send("updateAllClients");
             }, 100); 
         }
+    });
+
+    cepTextBox.addEventListener("input", function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+    
+        if(value.length > 5) {
+            value = value.slice(0,5) + "-" + value.slice(5);
+        }
+        e.target.value = value;
     });
 
     div.appendChild(streetNameTextLabel);

@@ -38,7 +38,10 @@ function createClientObject(name, phone, creationDate, id) {
     const creationDateTextLabel = document.createElement("label");
     creationDateTextLabel.className = "CreationDateText";
     creationDateTextLabel.setAttribute("text", `${creationDate}`);
-    creationDateTextLabel.innerText = `${creationDate}`;
+    const d = creationDate.slice(8, 10);
+    const m = creationDate.slice(5, 7);
+    const y = creationDate.slice(0, 4);
+    creationDateTextLabel.innerText = `${d}/${m}/${y}`;
 
     div.appendChild(nameTextLabel);
     div.appendChild(phoneTextLabel);

@@ -322,10 +322,10 @@ function clientFieldsDisabled (boolValue) {
     creditTextBoxElement.disabled = boolValue;
 }
 
-birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that verificates data sent by user.
+birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that verificates and formats data sent by user.
     let value = e.target.value.replace(/\D/g, '');
     
-    if(value.length >= 2) {
+    if(value.length > 2) {
         let day = parseInt(value.slice(0,2), 10);
         if(day > 31){
             value = "31";
@@ -334,7 +334,7 @@ birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that
         }
     }
 
-    if(value.length >= 5){
+    if(value.length > 5){
         let month = parseInt(value.slice(3, 5), 10);
         if (month > 12) {
             value = value.slice(0, 2) + "/12";

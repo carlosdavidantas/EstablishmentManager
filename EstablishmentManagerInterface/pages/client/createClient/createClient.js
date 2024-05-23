@@ -220,10 +220,10 @@ clientSaveButton.addEventListener("click", async () => {
 });
 
 
-birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that verificates data sent by user.
+birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that verificates and formats data sent by user.
     let value = e.target.value.replace(/\D/g, '');
     
-    if(value.length >= 2) {
+    if(value.length > 2) {
         let day = parseInt(value.slice(0,2), 10);
         if(day > 31){
             value = "31";
@@ -232,7 +232,7 @@ birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that
         }
     }
 
-    if(value.length >= 5){
+    if(value.length > 5){
         let month = parseInt(value.slice(3, 5), 10);
         if (month > 12) {
             value = value.slice(0, 2) + "/12";
@@ -246,6 +246,40 @@ birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that
         if(year > actualYear){
             value = value.slice(0, 6) + `${actualYear}`;
         }
+    }
+    
+    e.target.value = value;
+});
+
+cpfTextBoxElement.addEventListener("input", function(e) {  // Function that formats data sent by user.
+    let value = e.target.value.replace(/\D/g, '');
+    
+    if(value.length > 3) {
+        value = value.slice(0,3) + "." + value.slice(3);
+    }
+
+    if(value.length > 7){
+        value = value.slice(0, 7) + "." + value.slice(7);
+    }
+    if(value.length > 11){
+        value = value.slice(0, 11) + "-" + value.slice(11);
+    }
+    
+    e.target.value = value;
+});
+
+rgTextBoxElement.addEventListener("input", function(e) {  // Function that formats data sent by user.
+    let value = e.target.value.replace(/\D/g, '');
+    
+    if(value.length > 2) {
+        value = value.slice(0,2) + "." + value.slice(2);
+    }
+
+    if(value.length > 6){
+        value = value.slice(0, 6) + "." + value.slice(6);
+    }
+    if(value.length > 10){
+        value = value.slice(0, 10) + "-" + value.slice(10);
     }
     
     e.target.value = value;

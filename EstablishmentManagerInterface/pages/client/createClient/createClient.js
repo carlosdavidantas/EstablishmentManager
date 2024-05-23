@@ -125,8 +125,17 @@ function createAddressesObject() {
     descriptionTextBox.setAttribute("id", `addressDescriptionTextBox-${addressesObjectCount}`);
     descriptionTextBox.maxLength = "100";
     descriptionTextBox.placeholder = "Principal";
-    
 
+
+    cepTextBox.addEventListener("input", function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+    
+        if(value.length > 5) {
+            value = value.slice(0,5) + "-" + value.slice(5);
+        }
+        e.target.value = value;
+    });
+    
 
     div.appendChild(streetNameTextLabel);
     div.appendChild(streetNameTextBox);

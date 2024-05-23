@@ -3,6 +3,7 @@ const getDB = require("../../../scripts/getDB.js");
 const putDB = require("../../../scripts/putDB.js");
 const deleteDB = require("../../../scripts/deleteDB.js");
 const { ipcRenderer } = require("electron"); // ipcrenderer is needed to receive the client id from the previous page.
+const formatDate = require("../../../scripts/formatDate.js")
 
 
 const elementPhoneList = document.getElementById("phonesList");
@@ -32,12 +33,7 @@ ipcRenderer.on("receivedClientId", (event, clientId) => {
     insertInformationOnScreen(specificClientURL);
 })
 
-function formatDate(date) {
-    const day = date.slice(8, 10);
-    const month = date.slice(5, 7);
-    const year = date.slice(0, 4);
-    return `${day}/${month}/${year}`
-}
+
 
 function createPhoneObject(telephoneObject) {
     const div = document.createElement("div");
@@ -72,7 +68,7 @@ function createPhoneObject(telephoneObject) {
 
     const creationDateTextBox = document.createElement("input");
     creationDateTextBox.className = "objectTextBox";
-    creationDateTextBox.value = formatDate(telephoneObject.creation_date);
+    creationDateTextBox.value = formatDate.execute(telephoneObject.creation_date);
     creationDateTextBox.disabled = true;
 
     const modifiedDateTextLabel = document.createElement("label");
@@ -81,7 +77,7 @@ function createPhoneObject(telephoneObject) {
     
     const modifiedDateTextBox = document.createElement("input");
     modifiedDateTextBox.className = "objectTextBox";
-    modifiedDateTextBox.value = formatDate(telephoneObject.modified_date);
+    modifiedDateTextBox.value = formatDate.execute(telephoneObject.modified_date);
     modifiedDateTextBox.disabled = true;
     modifiedDateTextBox.setAttribute("id", `modifiedDateTextBox-${telephoneObject.client_telephoneId}`);
 
@@ -209,7 +205,7 @@ function createAddressesObject(addressObject) {
 
     const creationDateTextBox = document.createElement("input");
     creationDateTextBox.className = "objectTextBox";
-    creationDateTextBox.value = formatDate(addressObject.creation_date);
+    creationDateTextBox.value = formatDate.execute(addressObject.creation_date);
     creationDateTextBox.disabled = true;
 
     const modifiedDateTextLabel = document.createElement("label");
@@ -218,7 +214,7 @@ function createAddressesObject(addressObject) {
 
     const modifiedDateTextBox = document.createElement("input");
     modifiedDateTextBox.className = "objectTextBox";
-    modifiedDateTextBox.value = formatDate(addressObject.modified_date);
+    modifiedDateTextBox.value = formatDate.execute(addressObject.modified_date);
     modifiedDateTextBox.disabled = true;
 
     const editButton = document.createElement("button");
@@ -290,15 +286,13 @@ function createAddressesObject(addressObject) {
     elementAddressesList.appendChild(div);
 }
 
-
-
 function insertClientBasicInfomation(client) {
     nameTextBoxElement.value = client.name;
     cpfTextBoxElement.value = client.cpf;
-    birthdayTextBoxElement.value = formatDate(client.birthday);
+    birthdayTextBoxElement.value = formatDate.execute(client.birthday);
     rgTextBoxElement.value = client.rg;
-    creationDateTextTextBoxElement.value = formatDate(client.creation_date);
-    modifiedDateTextBoxElement.value = formatDate(client.modified_date);
+    creationDateTextTextBoxElement.value = formatDate.execute(client.creation_date);
+    modifiedDateTextBoxElement.value = formatDate.execute(client.modified_date);
     debitTextBoxElement.value = client.debit_on_establishment;
     creditTextBoxElement.value = client.credit_on_establishment;
 }
@@ -327,6 +321,37 @@ function clientFieldsDisabled (boolValue) {
     debitTextBoxElement.disabled = boolValue;
     creditTextBoxElement.disabled = boolValue;
 }
+
+birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that verificates data sent by user.
+    let value = e.target.value.replace(/\D/g, '');
+    
+    if(value.length >= 2) {
+        let day = parseInt(value.slice(0,2), 10);
+        if(day > 31){
+            value = "31";
+        }else {
+            value = value.slice(0,2) + "/" + value.slice(2);
+        }
+    }
+
+    if(value.length >= 5){
+        let month = parseInt(value.slice(3, 5), 10);
+        if (month > 12) {
+            value = value.slice(0, 2) + "/12";
+        } else {
+            value = value.slice(0, 5) + "/" + value.slice(5);
+        }
+    }
+    if(value.length >= 10){
+        let year = parseInt(value.slice(6,10));
+        let actualYear = new Date().getFullYear();
+        if(year > actualYear){
+            value = value.slice(0, 6) + `${actualYear}`;
+        }
+    }
+    
+    e.target.value = value;
+});
 
 clientInfosEditButton.addEventListener("click", () => {
     if(clientInfosEditButton.innerHTML === "Edit") {

@@ -33,6 +33,8 @@ function createTelephoneObject() {
     const descriptionTextBox = document.createElement("input");
     descriptionTextBox.className = "objectTextBox";
     descriptionTextBox.setAttribute("id", `telephoneDescriptionTextBox-${telephonesObjectsCount}`);
+    descriptionTextBox.placeholder = "Principal";
+    descriptionTextBox.maxLength = "100";
 
     const numberTextLabel = document.createElement("label");
     numberTextLabel.className = "infoObjectLabel";
@@ -41,6 +43,7 @@ function createTelephoneObject() {
     const numberTextBox = document.createElement("input");
     numberTextBox.className = "objectTextBox";
     numberTextBox.setAttribute("id", `telephoneNumberTextBox-${telephonesObjectsCount}`);
+    numberTextBox.maxLength = "13";
 
 
     div.appendChild(descriptionTextLabel);
@@ -65,6 +68,7 @@ function createAddressesObject() {
     const streetNameTextBox = document.createElement("input");
     streetNameTextBox.className = "objectTextBox";
     streetNameTextBox.setAttribute("id", `addressStreetNameTextBox-${addressesObjectCount}`);
+    streetNameTextBox.maxLength = "100";
 
     const complementTextLabel = document.createElement("label");
     complementTextLabel.className = "infoObjectLabel";
@@ -73,6 +77,7 @@ function createAddressesObject() {
     const complementTextBox = document.createElement("input");
     complementTextBox.className = "objectTextBox";
     complementTextBox.setAttribute("id", `addressComplementTextBox-${addressesObjectCount}`);
+    complementTextBox.maxLength = "100";
 
     const referenceTextLabel = document.createElement("label");
     referenceTextLabel.className = "infoObjectLabel";
@@ -81,6 +86,7 @@ function createAddressesObject() {
     const referenceTextBox = document.createElement("input");
     referenceTextBox.className = "objectTextBox";
     referenceTextBox.setAttribute("id", `addressReferenceTextBox-${addressesObjectCount}`);
+    referenceTextBox.maxLength = "100";
 
     const districtTextLabel = document.createElement("label");
     districtTextLabel.className = "infoObjectLabel";
@@ -89,6 +95,7 @@ function createAddressesObject() {
     const districtTextBox = document.createElement("input");
     districtTextBox.className = "objectTextBox";
     districtTextBox.setAttribute("id", `addressDistrictTextBox-${addressesObjectCount}`);
+    districtTextBox.maxLength = "100";
 
     const cepTextLabel = document.createElement("label");
     cepTextLabel.className = "infoObjectLabel";
@@ -97,6 +104,8 @@ function createAddressesObject() {
     const cepTextBox = document.createElement("input");
     cepTextBox.className = "objectTextBox";
     cepTextBox.setAttribute("id", `addressCepTextBox-${addressesObjectCount}`);
+    cepTextBox.maxLength = "10";
+    cepTextBox.placeholder = "00000-000";
 
     const numberTextLabel = document.createElement("label");
     numberTextLabel.className = "infoObjectLabel";
@@ -105,6 +114,7 @@ function createAddressesObject() {
     const numberTextBox = document.createElement("input");
     numberTextBox.className = "objectTextBox";
     numberTextBox.setAttribute("id", `addressNumberTextBox-${addressesObjectCount}`);
+    numberTextBox.maxLength = "50";
 
     const descriptionTextLabel = document.createElement("label");
     descriptionTextLabel.className = "infoObjectLabel";
@@ -113,6 +123,9 @@ function createAddressesObject() {
     const descriptionTextBox = document.createElement("input");
     descriptionTextBox.className = "objectTextBox";
     descriptionTextBox.setAttribute("id", `addressDescriptionTextBox-${addressesObjectCount}`);
+    descriptionTextBox.maxLength = "100";
+    descriptionTextBox.placeholder = "Principal";
+    
 
 
     div.appendChild(streetNameTextLabel);
@@ -157,7 +170,7 @@ function createClientObject() {
         const addressNumberTextBox = document.getElementById(`addressNumberTextBox-${addressObject}`).value;
         const addressReferenceTextBox = document.getElementById(`addressReferenceTextBox-${addressObject}`).value;
         const addressStreetNameTextBox = document.getElementById(`addressStreetNameTextBox-${addressObject}`).value;
-        
+
         const address = {
             cep: addressCepTextBox,
             complement: addressComplementTextBox,
@@ -218,7 +231,6 @@ clientSaveButton.addEventListener("click", async () => {
         }
     }
 });
-
 
 birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that verificates and formats data sent by user.
     let value = e.target.value.replace(/\D/g, '');

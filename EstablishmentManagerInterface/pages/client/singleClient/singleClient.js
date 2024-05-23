@@ -353,6 +353,40 @@ birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that
     e.target.value = value;
 });
 
+cpfTextBoxElement.addEventListener("input", function(e) {  // Function that formats data sent by user.
+    let value = e.target.value.replace(/\D/g, '');
+    
+    if(value.length > 3) {
+        value = value.slice(0,3) + "." + value.slice(3);
+    }
+
+    if(value.length > 7){
+        value = value.slice(0, 7) + "." + value.slice(7);
+    }
+    if(value.length > 11){
+        value = value.slice(0, 11) + "-" + value.slice(11);
+    }
+    
+    e.target.value = value;
+});
+
+rgTextBoxElement.addEventListener("input", function(e) {  // Function that formats data sent by user.
+    let value = e.target.value.replace(/\D/g, '');
+    
+    if(value.length > 2) {
+        value = value.slice(0,2) + "." + value.slice(2);
+    }
+
+    if(value.length > 6){
+        value = value.slice(0, 6) + "." + value.slice(6);
+    }
+    if(value.length > 10){
+        value = value.slice(0, 10) + "-" + value.slice(10);
+    }
+    
+    e.target.value = value;
+});
+
 clientInfosEditButton.addEventListener("click", () => {
     if(clientInfosEditButton.innerHTML === "Edit") {
         clientInfosEditButton.innerText = "Save";

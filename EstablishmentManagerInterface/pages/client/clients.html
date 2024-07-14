@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="../reset.css" />
         <link rel="stylesheet" href="clients.css" />
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> -->
         <meta charset="UTF-8" />
         <meta
             http-equiv="Content-Security-Policy"
@@ -15,26 +16,31 @@
         <title>Clients</title>
     </head>
     <body>
-        <section class="searchSpace">
-            <section class="searchBackground">
-                <button class="searchButton" id="searchButton">🔍</button>
-                <input type="text" class="searchText" id="searchText" placeholder="Search"></label>
-                <button class="createNewClientButton" id="createNewClientButton">➕</button>
+        <section class="container">
+            <section class="searchSpace">
+                <section class="searchBackground">
+                    <input type="text" class="searchText" id="searchText" placeholder="Search"></label>
+                    <button class="searchButton" id="searchButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </button>
+                </section>
             </section>
-        </section>
-        
-        <section class="clientObjects">
-            <div class="infoClientsName">
+            
+            <section class="clientObjects">
                 <div class="textSpace">
-                    <label class="infoClientsTextName" >Name</label>
-                    <label class="infoClientsTextPhoneNumber" >Number</label>
-                    <label class="infoClientsTextCreationDate" >Creation Date</label>
+                    <label class= "infos" id="infoClientsTextName" >Name</label>
+                    <label class= "infos" id="infoClientsTextPhoneNumber" >Number</label>
+                    <label class= "infos" id="infoClientsTextCreationDate" >Creation Date</label>
                 </div>
-            </div>
-            <ul class="clientList" id="clientList">
-            </ul>
+                <ul class="clientList" id="clientList">
+
+                </ul>  
+            </section>
+            <button class="createNewClientButton" id="createNewClientButton">➕</button>
+            <label class="BottomEstablishmentName">EstablishmentManager</label>
+            <script src="clients.js"></script>
         </section>
-        <label class="BottomEstablishmentName">EstablishmentManager</label>
-        <script src="clients.js"></script>
     </body>
 </html>

@@ -27,3 +27,10 @@ document.getElementById("passwordTextBox").addEventListener("keydown", async (ke
         
     }
 });
+
+document.getElementById("passwordTextBox").addEventListener("mouseover", (event) => {
+    document.getElementById("passwordTextBox").type = "text";
+    setTimeout(() => {
+        document.getElementById("passwordTextBox").type = "password";
+    }, 500);
+});

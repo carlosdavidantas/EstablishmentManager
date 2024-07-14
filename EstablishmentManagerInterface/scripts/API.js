@@ -1,5 +1,5 @@
 const { spawn } = require('node:child_process');
-const apiPath = "C:\\Projetos\\EstablishmentManager\\EstablishmentManagerAPI\\bin\\Release\\net8.0\\EstablishmentManagerAPI.exe";
+const apiPath = "O:\\Projetos\\EstablishmentManager\\EstablishmentManagerAPI\\bin\\Release\\net8.0\\EstablishmentManagerAPI.exe";
 const URL = "http://localhost:5000/v1/";
 
 function open() {

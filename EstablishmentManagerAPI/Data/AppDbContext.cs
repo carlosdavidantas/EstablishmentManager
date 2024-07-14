@@ -29,7 +29,7 @@ namespace EstablishmentManagerAPI.Data
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => 
             optionsBuilder.UseSqlServer(connectionString:
-                "Server=DESKTOP-IC0LVQA\\SQLEXPRESS;Database=master;Trusted_Connection=True;TrustServerCertificate=True;");
+                "Server=localhost;Database=master;Trusted_Connection=True;TrustServerCertificate=True;");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

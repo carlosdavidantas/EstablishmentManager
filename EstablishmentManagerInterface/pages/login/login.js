@@ -5,28 +5,25 @@ const loginStatus = document.getElementById("loginStatus");
 
 document.getElementById("passwordTextBox").addEventListener("keydown", async (keydownEvent) => {
     if(keydownEvent.key === "Enter"){
-        const userInput = document.getElementById("userTextBox").value;
-        const passwordInput = document.getElementById("passwordTextBox").value;
-        let loginData = {
-            Login: userInput,
-            Password: passwordInput
-        }
-        loginStatus.textContent = "Loading";
-        const response = await postDB.execute(postLoginURL, loginData);
-        if(response === true){
-            location.href = "../home/home.html";
-            loginStatus.textContent = "";
-        }
-        else
-        {
-            loginStatus.textContent = "Wrong user or password";
-            setTimeout(() => {
-                loginStatus.textContent = "";
-            }, 1500);
-        }
-        
+        await connect();
     }
 });
+
+document.getElementById("loginButton").addEventListener("click", async () => {
+    await connect();
+})
+
+let isVisible = false;
+document.getElementById("viewPasswordButton").addEventListener("click", () => {
+    if(isVisible == false) {
+        document.getElementById("passwordTextBox").type = "text";
+        isVisible = true;
+    }
+    else {
+        document.getElementById("passwordTextBox").type = "password";
+        isVisible = false;
+    }
+})
 
 document.getElementById("passwordTextBox").addEventListener("mouseover", (event) => {
     document.getElementById("passwordTextBox").type = "text";
@@ -34,3 +31,25 @@ document.getElementById("passwordTextBox").addEventListener("mouseover", (event)
         document.getElementById("passwordTextBox").type = "password";
     }, 500);
 });
+
+async function connect() {
+    const userInput = document.getElementById("userTextBox").value;
+    const passwordInput = document.getElementById("passwordTextBox").value;
+    let loginData = {
+        Login: userInput,
+        Password: passwordInput
+    };
+    loginStatus.textContent = "Loading";
+    const response = await postDB.execute(postLoginURL, loginData);
+    if (response === true) {
+        location.href = "../home/home.html";
+        loginStatus.textContent = "";
+    }
+
+    else {
+        loginStatus.textContent = "Wrong user or password";
+        setTimeout(() => {
+            loginStatus.textContent = "";
+        }, 1500);
+    }
+}

@@ -37,21 +37,60 @@ body {
     resize: none;
     font-family: 'Lucida Sans';
     background-color: rgb(120, 120, 120);
+    outline: none;
+}
+
+.passwordBox {
+    background-color: rgb(120, 120, 120);
+    border-color: rgb(218, 214, 28);
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .textBoxPassword {
     background-color: rgb(120, 120, 120);
+    width: 90%;
     border-color: transparent;
+    user-select: none;
+    outline: none;
+    border-width: 2px;
     border-radius: 1vw;
     font-size: 2.3vw;
     resize: none;
     font-family: 'Lucida Sans';
-    /* color: transparent;
-    text-shadow: 0 0 8px rgb(0, 0, 0); */
+}
+
+.viewPasswordButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    /* border-radius: 50%; */
+    background-color: transparent;
+    border-color: transparent;
+    
+}
+
+.loginButtonBox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.loginButton {
+    width: 4vw;
+    border-radius: 1vh;
+    margin-top: 1vh;
+    border-color: gray;
+    background-color: white;
 }
 
 .loginStatus {
     font-size: 1.5vw;
     font-family: 'Lucida Sans';
-    color: rgb(200, 0, 0);
 }

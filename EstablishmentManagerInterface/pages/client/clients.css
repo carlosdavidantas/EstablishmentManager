@@ -139,6 +139,7 @@ ul {
 .clientList {
     width: 96vw;
     height: 80vh;
+    border-radius: 12px;
     margin-top: 1vh;
     display: flex;
     flex-direction: column;

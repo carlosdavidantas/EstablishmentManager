@@ -3,6 +3,7 @@ const API = require("./API.js");
 const loginPagePath = "./pages/login/login.html";
 const singleClientPagePath = "./pages/client/singleClient/singleClient.html";
 const allClientsPagePath = "./pages/client/clients.html";
+const tablesPagePath = "./pages/tables/tables.html";
 const createClientPath = "./pages/client/createClient/createClient.html";
 let APIExe;
 
@@ -39,6 +40,10 @@ app.on("window-all-closed", () => {
 
 ipcMain.on("openAllClients", () => {
     createWindow(allClientsPagePath, true, "allClients");
+});
+
+ipcMain.on("openTables", () => {
+    createWindow(tablesPagePath, true, "tables");
 });
 
 ipcMain.on("openSingleClient", (event, clientId) => {

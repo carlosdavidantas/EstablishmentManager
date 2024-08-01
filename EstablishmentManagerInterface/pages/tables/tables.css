@@ -4,13 +4,13 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .configurationItems {
     background-color: white;
-    width: 96.5vw;
+    width: 96vw;
     height: 10vh;
     border-radius: 10px;
     display: flex;
@@ -19,13 +19,17 @@ body {
     align-items: center;
 }
 
+.itemsPlace {
+    width: 25vw;
+    margin-left: 1vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-content: flex-start;
+}
+
 .configurationButtons {
     width: 3.8vw;
     height: 6.8vh;
-    margin-top: 1.1vh;
-    margin-left: 3.5vh;
-    margin-right: 1vw;
-    margin-bottom: 1.1vh;
     background-color: rgb(120, 120, 120);
     border-radius: 10px;
     border-color: lightgray;
@@ -34,27 +38,37 @@ body {
     color: rgb(255, 255, 255);
 }
 
-.tablesList {
-    margin-top: 3.5vh;
+.tablesSpace {
     background-color: white;
-    width: 96.5vw;
+    width: 96vw;
     height: 80vh;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
-    flex-direction: row;
-    justify-content:center;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tablesList {
+    width: 98%;
+    height: 98%;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    justify-items: center;
+    align-content: flex-start;
+    grid-row-gap: 5px;
+    overflow: scroll;
+}
+
+.tablesList::-webkit-scrollbar {
+    display: none;
 }
 
 .tablesButton {
-    width: 10vw;
+    width: 9vw;
     height: 15vh;
-    margin-top: 3.5vh;
-    margin-left: 1.75vw;
-    margin-right: 1.75vw;
-    margin-bottom: 3.5vh;
     background-color: rgb(120, 120, 120);
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: lightgray;
     font-family: 'Lucida Sans';
     font-size: 1.5vw;
@@ -62,8 +76,10 @@ body {
 }
 
 .BottomEstablishmentName {
-    margin-top: 2vh;
+    width: 96vw;
+    height: 2vh;
     font-family: 'Lucida Sans';
-    font-size: 12px;
+    font-size: 2vh;
     color: rgb(40, 40, 40);
+    text-align: center;
 }

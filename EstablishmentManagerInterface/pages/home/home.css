@@ -4,20 +4,27 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    /*border: 3px solid green;*/
 }
 
 .configurationItems {
     background-color: white;
-    width: 96.5vw;
+    width: 96vw;
     height: 10vh;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+}
+
+.itemsPlace  {
+    width: 25vw;
+    margin-left: 1vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-content: flex-start;
 }
 
 .configurationButtons {
@@ -36,20 +43,25 @@ body {
 }
 
 .defaultItems {
-    margin-top: 3.5vh;
     background-color: white;
-    width: 96.5vw;
+    width: 96vw;
     height: 80vh;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content:flex-start;
-    flex-wrap: wrap;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    align-content: flex-start;
+    grid-row-gap: 5px;
+    overflow: scroll;
+}
+
+.defaultItems::-webkit-scrollbar {
+    display: none;
 }
 
 .defaultButtons {
-    width: 15.77vw;
-    height: 20.77vh;
+    width: 14vw;
+    height: 20vh;
     margin-top: 3.5vh;
     margin-left: 1.75vw;
     margin-right: 1.75vw;
@@ -63,8 +75,10 @@ body {
 }
 
 .BottomEstablishmentName {
-    margin-top: 2vh;
+    width: 96vw;
+    height: 2vh;
     font-family: 'Lucida Sans';
-    font-size: 12px;
+    font-size: 2vh;
     color: rgb(40, 40, 40);
+    text-align: center;
 }

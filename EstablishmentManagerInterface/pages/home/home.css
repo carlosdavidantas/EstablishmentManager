@@ -1,4 +1,4 @@
-body {
+.container {
     background-color: rgb(225, 225, 225);
     width: 100vw;
     height: 100vh;
@@ -11,7 +11,7 @@ body {
 .configurationItems {
     background-color: white;
     width: 96vw;
-    height: 10vh;
+    height: 8vh;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -30,22 +30,30 @@ body {
 .configurationButtons {
     width: 3.8vw;
     height: 6.8vh;
-    margin-top: 1.1vh;
-    margin-left: 3.5vh;
-    margin-right: 1vw;
-    margin-bottom: 1.1vh;
     background-color: rgb(120, 120, 120);
     border-radius: 10px;
     border-color: lightgray;
     font-family: 'Lucida Sans';
     font-size: 1.3vw;
     color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .defaultItems {
     background-color: white;
     width: 96vw;
     height: 80vh;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemsSpace {
+    width: 98%;
+    height: 98%;
     border-radius: 12px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -55,23 +63,22 @@ body {
     overflow: scroll;
 }
 
-.defaultItems::-webkit-scrollbar {
+.itemsSpace::-webkit-scrollbar {
     display: none;
 }
 
 .defaultButtons {
     width: 14vw;
     height: 20vh;
-    margin-top: 3.5vh;
-    margin-left: 1.75vw;
-    margin-right: 1.75vw;
-    margin-bottom: 3.5vh;
     background-color: rgb(120, 120, 120);
     border-radius: 10px;
     border-color: lightgray;
     font-family: 'Lucida Sans';
     font-size: 1.5vw;
     color: rgb(220, 220, 220);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .BottomEstablishmentName {

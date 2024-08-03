@@ -17,36 +17,36 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>
 
 var app = builder.Build();
  
-void SettingTest(AppDbContext context)
-{
-    Client client = new Client("Teste2", "847542364", DateOnly.Parse("14/01/2024"), "945783513", 125.75m, 0);
+//void SettingTest(AppDbContext context)
+//{
+//    Client client = new Client("Teste2", "847542364", DateOnly.Parse("14/01/2024"), "945783513", 125.75m, 0);
 
-    Client_telephone first_telephone = new Client_telephone("268536953", "Telefone principal");
-    first_telephone.Client = client;
+//    Client_telephone first_telephone = new Client_telephone("268536953", "Telefone principal");
+//    first_telephone.Client = client;
 
-    Client_telephone second_telephone = new Client_telephone("986832394", "Telefone secundário");
-    second_telephone.Client = client;
+//    Client_telephone second_telephone = new Client_telephone("986832394", "Telefone secundário");
+//    second_telephone.Client = client;
 
-    Client_telephone son_telephone = new Client_telephone("982366157", "Telefone filho");
-    son_telephone.Client = client;
+//    Client_telephone son_telephone = new Client_telephone("982366157", "Telefone filho");
+//    son_telephone.Client = client;
 
-    Client_address primary_address = new Client_address("Rua m", "Novo Bairro", "98261422", "Apartamento de 8 andares",
-        "Esquina com a rua K", "8", "Endereço principal");
-    primary_address.Client = client;
+//    Client_address primary_address = new Client_address("Rua m", "Novo Bairro", "98261422", "Apartamento de 8 andares",
+//        "Esquina com a rua K", "8", "Endereço principal");
+//    primary_address.Client = client;
 
-    Client_address work_address = new Client_address("Rua delta", "Novo Bairro", "89815543", "No shopping",
-        "Em frente ao mercado", "7m", "Trabalho");
-    work_address.Client = client;
+//    Client_address work_address = new Client_address("Rua delta", "Novo Bairro", "89815543", "No shopping",
+//        "Em frente ao mercado", "7m", "Trabalho");
+//    work_address.Client = client;
 
-    client.Client_telephones.Add(first_telephone);
-    client.Client_telephones.Add(second_telephone);
-    client.Client_telephones.Add(son_telephone);
-    client.Client_addresses.Add(primary_address);
-    client.Client_addresses.Add(work_address);
+//    client.Client_telephones.Add(first_telephone);
+//    client.Client_telephones.Add(second_telephone);
+//    client.Client_telephones.Add(son_telephone);
+//    client.Client_addresses.Add(primary_address);
+//    client.Client_addresses.Add(work_address);
 
-    context.Clients.Add(client);
-    context.SaveChanges();
-}
+//    context.Clients.Add(client);
+//    context.SaveChanges();
+//}
 
 //Clients routes
 //Return every client with telephones and addresses info.
@@ -78,7 +78,11 @@ app.MapGet("/v1/get/clients/{search}", async (string search, AppDbContext contex
         .Include(client => client.Client_telephones)
         .Include(client => client.Client_addresses)
         .Where(client => client.ClientId == idResult
-        || client.Birthday == birth || client.Name == search || client.Cpf == search || client.Rg == search).ToListAsync();
+            || client.Birthday == birth
+            || client.Name == search
+            || client.Cpf == search
+            || client.Rg == search)
+        .ToListAsync();
 
     if(clientsFoundList.Count == 0)
     {

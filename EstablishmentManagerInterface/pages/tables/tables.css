@@ -11,7 +11,7 @@ body {
 .configurationItems {
     background-color: white;
     width: 96vw;
-    height: 10vh;
+    height: 8vh;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -36,6 +36,9 @@ body {
     font-family: 'Lucida Sans';
     font-size: 1.3vw;
     color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tablesSpace {
@@ -73,6 +76,9 @@ body {
     font-family: 'Lucida Sans';
     font-size: 1.5vw;
     color: rgb(220, 220, 220);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .BottomEstablishmentName {

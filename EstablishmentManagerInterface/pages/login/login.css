@@ -12,28 +12,36 @@ body {
     /*border: 3px solid green;*/
 }
 
-.loginSection {
+.backgroundLoginSection {
     background-color: white;
-    width: 30vw;
-    /* height: 10vh; */
-    border-radius: 1.5vw;
+    width: 20vw;
+    height: 20vh;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    padding: 6vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginMaxArea {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .textBoxDescription {
-    font-size: 1.8vw;
+    font-size: x-large;
     font-family: 'Lucida Sans';
     color: rgb(0, 0, 0);
     margin-bottom: 5px;
 }
 
 .textBoxLogin {
-    border-radius: 1vw;
+    border-radius: 5px;
     border-color: transparent;
-    font-size: 2.3vw;
+    font-size: large;
     resize: none;
     font-family: 'Lucida Sans';
     background-color: rgb(120, 120, 120);
@@ -41,23 +49,24 @@ body {
 }
 
 .passwordBox {
+    width: 100%;
+    height: 28px;
     background-color: rgb(120, 120, 120);
     border-color: rgb(218, 214, 28);
-    border-radius: 1vw;
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .textBoxPassword {
-    background-color: rgb(120, 120, 120);
-    width: 90%;
+    width: 100%;
+    background-color: transparent;
     border-color: transparent;
     user-select: none;
     outline: none;
-    border-width: 2px;
-    border-radius: 1vw;
-    font-size: 2.3vw;
+    border-radius: 5px;
+    font-size: large;
     resize: none;
     font-family: 'Lucida Sans';
 }
@@ -70,7 +79,6 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50px;
-    /* border-radius: 50%; */
     background-color: transparent;
     border-color: transparent;
     
@@ -83,15 +91,15 @@ body {
 }
 
 .loginButton {
-    width: 4vw;
-    height: 4vh;
-    border-radius: 1vh;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
     margin-top: 1vh;
     border-color: gray;
     background-color: white;
 }
 
-.loginStatus {
-    font-size: 1.5vw;
+#loginStatus {
+    font-size: large;
     font-family: 'Lucida Sans';
 }

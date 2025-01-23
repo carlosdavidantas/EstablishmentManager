@@ -1,0 +1,27 @@
+@media (max-width: 768px) {
+    .textBoxDescription {
+        font-size: small;
+    }
+    .textBoxLogin {
+        font-size: small;
+    }
+    .passwordBox {
+        height: 22px;
+    }
+    .textBoxPassword {
+        font-size: small;
+    }
+    .viewPasswordButton {
+        width: 30px;
+        height: 30px;
+    }
+    .loginButton {
+        width: 54px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    #loginStatus {
+        font-size: small;
+    }
+}

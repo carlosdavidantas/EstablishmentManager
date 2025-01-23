@@ -2,8 +2,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="../reset.css" />
-    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="responsiveness.css" />
     <meta charset="UTF-8" />
 
     <!-- The following CSPs will allow Electron to execute scripts from the current website and from the APIUrl -->
@@ -20,21 +20,24 @@
     <title>Establishment Manager</title>
   </head>
   <body>
-    <section class="loginSection">
-      <label for="textBoxLogin" class="textBoxDescription">User</label>
-      <input type="text" id="userTextBox" minlength="0" maxlength="50" rows="1" class="textBoxLogin"/>
-      <label for="textBoxPassword" class="textBoxDescription">Password</label>
-      <section class="passwordBox">
-        <input type="password" id="passwordTextBox" minlength="0" maxlength="12" rows="1" class="textBoxPassword"/>
-        <button class="viewPasswordButton" id="viewPasswordButton">
-          <img src="../../icons/eyeSlash.svg" id="eyeIcon">
-        </button>
-      </section>
-      <section class="loginButtonBox">
-        <button class="loginButton" id="loginButton">Login</button>
+    <section class="backgroundLoginSection">
+      <section class="loginMaxArea">
+        <label for="textBoxLogin" class="textBoxDescription">Username</label>
+        <input type="text" id="userTextBox" minlength="0" maxlength="30" rows="1" class="textBoxLogin"/>
+        <label for="textBoxPassword" class="textBoxDescription">Password</label>
+        <section class="passwordBox">
+          <input type="password" id="passwordTextBox" minlength="0" maxlength="30" rows="1" class="textBoxPassword"/>
+          <button class="viewPasswordButton" id="viewPasswordButton">
+            <img src="../../icons/eyeSlash.svg" id="eyeIcon">
+          </button>
+        </section>
+        <section class="loginButtonBox">
+          <button class="loginButton" id="loginButton">Sign in</button>
+        </section>
+        
+        <label type="text" id="loginStatus"></label>
       </section>
       
-      <label type="text" id="loginStatus"></label>
     </section>
     <script src="login.js"></script>
   </body>

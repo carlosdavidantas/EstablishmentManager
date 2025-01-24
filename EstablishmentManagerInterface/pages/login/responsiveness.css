@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media (max-height: 800px) {
     .textBoxDescription {
         font-size: small;
     }

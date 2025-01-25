@@ -1,10 +1,7 @@
 using EstablishmentManagerAPI.Data;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Models.ClientRelated;
 using Models.UserRelated;
-using System;
-using System.Net;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,39 +13,28 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>
     (options => options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
+
+
+// This function validates if the client has a name, phone number and street name address.
+static IResult ClientValidation(Client client)
+{
+    string clientName = client.Name.Trim();
+    if (clientName.Length == 0 || clientName == null)
+        return Results.BadRequest("Client must have a name.");
+
+    string clientTelephone = client.Client_telephones.First().Number.Trim();
+    if (clientTelephone.Length == 0 || clientTelephone == null)
+        return Results.BadRequest("Client must have at least one phone number.");
+
+    string clientAdddress = client.Client_addresses.First().Street_name.Trim();
+    if (clientAdddress.Length == 0 || clientAdddress == null)
+        return Results.BadRequest("Client must have at least one street name addressed.");
+
+    return Results.Ok();
+}
  
-//void SettingTest(AppDbContext context)
-//{
-//    Client client = new Client("Teste2", "847542364", DateOnly.Parse("14/01/2024"), "945783513", 125.75m, 0);
 
-//    Client_telephone first_telephone = new Client_telephone("268536953", "Telefone principal");
-//    first_telephone.Client = client;
-
-//    Client_telephone second_telephone = new Client_telephone("986832394", "Telefone secundário");
-//    second_telephone.Client = client;
-
-//    Client_telephone son_telephone = new Client_telephone("982366157", "Telefone filho");
-//    son_telephone.Client = client;
-
-//    Client_address primary_address = new Client_address("Rua m", "Novo Bairro", "98261422", "Apartamento de 8 andares",
-//        "Esquina com a rua K", "8", "Endereço principal");
-//    primary_address.Client = client;
-
-//    Client_address work_address = new Client_address("Rua delta", "Novo Bairro", "89815543", "No shopping",
-//        "Em frente ao mercado", "7m", "Trabalho");
-//    work_address.Client = client;
-
-//    client.Client_telephones.Add(first_telephone);
-//    client.Client_telephones.Add(second_telephone);
-//    client.Client_telephones.Add(son_telephone);
-//    client.Client_addresses.Add(primary_address);
-//    client.Client_addresses.Add(work_address);
-
-//    context.Clients.Add(client);
-//    context.SaveChanges();
-//}
-
-//Clients routes
+//Clients routes.
 //Return every client with telephones and addresses info.
 app.MapGet("/v1/get/clients/", async (AppDbContext context) =>
 {
@@ -91,22 +77,26 @@ app.MapGet("/v1/get/clients/{search}", async (string search, AppDbContext contex
     return Results.Ok(clientsFoundList);
 });
 
-app.MapPost("v1/post/clients", async (Client sentClient, AppDbContext context) =>
+app.MapPost("v1/post/client", async (Client sentClient, AppDbContext context) =>
 {
-    Console.WriteLine("My client - " + sentClient);
+    // Validades the client passed and returns 400 if there was something wrong with the client data.
+    IResult validation = ClientValidation(sentClient);
+    if(validation != Results.Ok()) 
+    { 
+        return validation; 
+    }
+
     sentClient.Creation_date = DateOnly.FromDateTime(DateTime.Today);
     sentClient.Modified_date = DateOnly.FromDateTime(DateTime.Today);
 
     foreach (var address in sentClient.Client_addresses)
     {
-        Console.WriteLine("Address - " + address);
         address.Creation_date = DateOnly.FromDateTime(DateTime.Today);
         address.Modified_date = DateOnly.FromDateTime(DateTime.Today);
     }
 
     foreach (var telephone in sentClient.Client_telephones)
     {
-        Console.WriteLine("Telephone - " + telephone);
         telephone.Creation_date = DateOnly.FromDateTime(DateTime.Today);
         telephone.Modified_date = DateOnly.FromDateTime(DateTime.Today);
     }
@@ -116,11 +106,18 @@ app.MapPost("v1/post/clients", async (Client sentClient, AppDbContext context) =
     return Results.Created($"v1/post/clients/{sentClient.ClientId}", sentClient);
 });
 
-app.MapPut("v1/put/clients/{id}", async (int id, Client inputClient, AppDbContext context) =>
+app.MapPut("v1/put/client/{id}", async (int id, Client inputClient, AppDbContext context) =>
 {
     var client = await context.Clients.FindAsync(id);
     if (client == null)
-        return Results.NotFound();
+        return Results.NotFound("The id passed does not contain any client associate");
+
+    // Validades the client passed and returns 400 if there was something wrong with the client data.
+    string clientName = inputClient.Name.Trim();
+    if (clientName.Length == 0 || clientName == null)
+    {
+        return Results.BadRequest("Client must have a correct name");
+    }
 
     client.Birthday = inputClient.Birthday;
     client.Cpf = inputClient.Cpf;
@@ -134,7 +131,7 @@ app.MapPut("v1/put/clients/{id}", async (int id, Client inputClient, AppDbContex
     return Results.Ok();
 });
 
-app.MapDelete("v1/delete/clients/{id}", async (int id, AppDbContext context) =>
+app.MapDelete("v1/delete/client/{id}", async (int id, AppDbContext context) =>
 {
     if(await context.Clients.FindAsync(id) is Client client)
     {

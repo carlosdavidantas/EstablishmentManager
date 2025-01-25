@@ -63,12 +63,13 @@ app.MapGet("/v1/get/clients/{search}", async (string search, AppDbContext contex
     var clientsFoundList = await context.Clients
         .Include(client => client.Client_telephones)
         .Include(client => client.Client_addresses)
-        .Where(client => client.ClientId == idResult
-            || client.Birthday == birth
-            || client.Name == search
-            || client.Cpf == search
-            || client.Rg == search)
-        .ToListAsync();
+        .Where(client => 
+            client.ClientId == idResult
+            //|| client.Birthday == birth
+            //|| client.Name == search
+            //|| client.Cpf == search
+            //|| client.Rg == search)
+        ).ToListAsync();
 
     if(clientsFoundList.Count == 0)
     {

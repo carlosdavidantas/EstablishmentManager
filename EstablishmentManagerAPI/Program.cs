@@ -51,30 +51,21 @@ app.MapGet("/v1/get/clients/", async (AppDbContext context) =>
 
 });
 
-//Search by a client prop and return a client object with telephones and addresses info.
-app.MapGet("/v1/get/clients/{search}", async (string search, AppDbContext context) =>
+//Search by a client id and return a client object with telephones and addresses info.
+app.MapGet("/v1/get/client/{search}", async (string search, AppDbContext context) =>
 {
-    DateOnly birth;
+  
     int idResult;
-
-    bool convertDate = DateOnly.TryParse(search, out birth);
     bool convertId = int.TryParse(search, out idResult);
 
     var clientsFoundList = await context.Clients
         .Include(client => client.Client_telephones)
         .Include(client => client.Client_addresses)
-        .Where(client => 
-            client.ClientId == idResult
-            //|| client.Birthday == birth
-            //|| client.Name == search
-            //|| client.Cpf == search
-            //|| client.Rg == search)
-        ).ToListAsync();
+        .Where(client => client.ClientId == idResult).ToListAsync();
 
     if(clientsFoundList.Count == 0)
-    {
         return Results.NoContent();
-    }
+    
     return Results.Ok(clientsFoundList);
 });
 

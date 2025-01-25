@@ -28,7 +28,7 @@ let addressesList;
 let thisClientId;
 
 ipcRenderer.on("receivedClientId", (event, clientId) => {
-    const specificClientURL = `${API.URL}get/clients/${clientId}`;
+    const specificClientURL = `${API.URL}get/client/${clientId}`;
     thisClientId = clientId;
     insertInformationOnScreen(specificClientURL);
 })

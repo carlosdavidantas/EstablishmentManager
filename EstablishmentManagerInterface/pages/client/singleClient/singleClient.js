@@ -415,16 +415,32 @@ clientInfosEditButton.addEventListener("click", () => {
     }
 
     if(clientInfosEditButton.innerHTML === "Save") {
+        const date = birthdayTextBoxElement.value;
+        const day = date.slice(0, 2);
+        const month = date.slice(3, 5);
+        const year = date.slice(6, 10);
+        const newDate = `${year}-${month}-${day}`
         try {
             let newClient = {
-                birthday: birthdayTextBoxElement.value,
+                birthday: newDate,
                 cpf: cpfTextBoxElement.value,
                 credit_on_establishment: creditTextBoxElement.value,
                 debit_on_establishment: debitTextBoxElement.value,
                 name: nameTextBoxElement.value,
                 rg: rgTextBoxElement.value
             }
-            putDB.execute(`${API.URL}put/clients/${thisClientId}`, newClient);
+
+            console.log(newClient);
+            const success = putDB.execute(`${API.URL}put/client/${thisClientId}`, newClient);
+            success.then((success) => {
+                if(success == true) {
+                    
+                }else {
+                    alert("Error while updating client!");
+                    window.close();
+                }
+            });
+            
         }
         catch(error) {
             console.log("ERROR Occurred - " + error);
@@ -439,7 +455,7 @@ clientInfosEditButton.addEventListener("click", () => {
 });
 
 function deleteClient() {
-    deleteDB.execute(`${API.URL}delete/clients/${thisClientId}`);
+    deleteDB.execute(`${API.URL}delete/client/${thisClientId}`);
     setTimeout(() => {
         ipcRenderer.send("updateAllClients");
     }, 100);

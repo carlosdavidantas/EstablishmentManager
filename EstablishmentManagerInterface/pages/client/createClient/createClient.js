@@ -207,7 +207,7 @@ function createClientObject() {
     const m = birthdayTextBoxElement.value.slice(3, 5);
     const y = birthdayTextBoxElement.value.slice(6, 10);
     const bithdayDateFomatted = `${y}-${m}-${d}`;
-    
+
     const client = {
         birthday: bithdayDateFomatted,
         client_addresses: clientAddressesArray,
@@ -224,7 +224,36 @@ function createClientObject() {
 
 clientSaveButton.addEventListener("click", async () => {
     const client = createClientObject();
-    const result = await postDB.execute(`${API.URL}post/clients`, client);
+    console.log(client);
+    if(client.birthday === "--")
+        client.birthday = "0001-01-01";
+
+    if(client.credit_on_establishment === "")
+        client.credit_on_establishment = "0";
+
+    if(client.debit_on_establishment === "")
+        client.debit_on_establishment = "0";
+
+    if(client.rg === "")
+        client.rg = "00.000.000-00";
+
+    if(client.cpf === "")
+        client.cpf = "000.000.000-00";
+
+    client.client_telephones.forEach(element => {
+        if(element.description === "")
+            element.description = "Principal";
+    });
+
+    client.client_addresses.forEach(element => {
+        if(element.description === "")
+            element.description = "Principal";
+
+        if(element.cep === "")
+            element.cep = "00000-000";
+    });
+
+    const result = await postDB.execute(`${API.URL}post/client`, client);
     if(result === true) {
         setTimeout(() => {
             ipcRenderer.send("updateAllClients");

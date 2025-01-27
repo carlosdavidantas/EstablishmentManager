@@ -13,7 +13,7 @@
 <body>
     <section class="background">
         <section class="topRectangle"></section>
-        <form class="infosSpace">
+        <div class="infosSpace">
             <label class="textLabel">Name:</label>
             <input type="text" class="textBox" id="nameText" maxlength="100" name="name" required>
             <label class="textLabel">CPF:</label>
@@ -26,17 +26,17 @@
             <input type="text" class="textBox" id="debitText" placeholder="0" name="debit">
             <label class="textLabel">Credit:</label>
             <input type="text" class="textBox" id="creditText" placeholder="0" name="credit">
-        </form>
-        <form class="phoneSpace">
+        </div>
+        <div class="phoneSpace">
             <label class="textLabel">Phone numbers:</label>
             <button class="addNewObjects" id="addNewTelephoneObject">➕</button>
             <ul class="phonesList" id="phonesList"></ul>
-        </form>
-        <form class="addressesSpace">
+        </div>
+        <div class="addressesSpace">
             <label class="textLabel">Addresses:</label>
             <button class="addNewObjects" id="addNewAddressObject">➕</button>
             <ul class="addressesList" id="addressesList"></ul>
-        </form>
+        </div>
         <button class="bottomSaveButton" id="clientSaveButton">Save</button>
     </section>
     <script src="createClient.js"></script>

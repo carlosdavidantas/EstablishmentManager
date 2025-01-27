@@ -40,6 +40,9 @@ function createPhoneObject(telephoneObject) {
     div.className = "phoneObject";
     div.setAttribute("id", `phoneObjectId-${telephoneObject.client_telephoneId}`);
 
+    const titleDiv = document.createElement("div");
+    titleDiv.className = "topBackground";
+
     const descriptionTextLabel = document.createElement("label");
     descriptionTextLabel.className = "infoObjectLabel";
     descriptionTextLabel.innerText = "Description:";
@@ -83,24 +86,42 @@ function createPhoneObject(telephoneObject) {
     modifiedDateTextBox.disabled = true;
     modifiedDateTextBox.setAttribute("id", `modifiedDateTextBox-${telephoneObject.client_telephoneId}`);
 
+    const buttonsDiv = document.createElement("div");
+    buttonsDiv.className = "phoneButtonsDiv";
+    
     const editButton = document.createElement("button");
-    editButton.className = "editObjectButton";
+    editButton.className = "editPhoneObjectButton";
     editButton.id = `${telephoneObject.clientId}`;
-    editButton.innerText = "Edit";
+
+    const editIcon = document.createElement("img");
+    editIcon.className = "editPhoneIcon";
+    editIcon.src = "../../../icons/pencil-edit.svg";
+    editButton.appendChild(editIcon);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "deletePhoneObjectButtom";
+    deleteButton.id = `${telephoneObject.clientId}`;
+    
+    const deleteIcon = document.createElement("img");
+    deleteIcon.className = "deletePhoneIcon";
+    deleteIcon.src = "../../../icons/trash-delete.svg";
+    deleteButton.appendChild(deleteIcon);
 
     function fieldsDisabled (boolValue) {
         descriptionTextBox.disabled = boolValue;
         numberTextBox.disabled = boolValue;
     }
 
-    editButton.addEventListener("click", (t) => {
-        if(editButton.innerHTML === "Edit") {
-            editButton.innerText = "Save";
+    editButton.addEventListener("click", () => {
+        const editIconVar = editButton.children[0];
+
+        if(editIconVar.src.includes("pencil-edit.svg")) {
+            editIconVar.src = "../../../icons/floppy-save.svg";
             fieldsDisabled(false);
             return;
         }
 
-        if(editButton.innerHTML === "Save") {
+        if(editIconVar.src.includes("floppy-save.svg")) {
             try {
                 let newTelephone = {
                     number: numberTextBox.value,
@@ -112,7 +133,7 @@ function createPhoneObject(telephoneObject) {
                 console.log("ERROR Occurred - " + error);
             }
 
-            editButton.innerText = "Edit";
+            editIconVar.src = "../../../icons/pencil-edit.svg";
             fieldsDisabled(true);
             setTimeout(() => {
                 ipcRenderer.send("updateAllClients");
@@ -120,7 +141,26 @@ function createPhoneObject(telephoneObject) {
         }
     });
 
-    div.appendChild(descriptionTextLabel);
+    deleteButton.addEventListener("click", () => {
+        try {
+            if(elementPhoneList.children.length > 1) {
+                deleteDB.execute(`${API.URL}delete/telephone/${telephoneObject.client_telephoneId}`);
+                div.remove();
+                setTimeout(() => {
+                    ipcRenderer.send("updateAllClients");
+                }, 100);
+            }
+        }
+        catch(error) {
+            console.log("ERROR Occurred - " + error);
+        }
+    });
+
+    div.appendChild(titleDiv);
+    titleDiv.appendChild(descriptionTextLabel);
+    titleDiv.appendChild(buttonsDiv);
+    buttonsDiv.appendChild(editButton);
+    buttonsDiv.appendChild(deleteButton);
     div.appendChild(descriptionTextBox);
     div.appendChild(numberTextLabel);
     div.appendChild(numberTextBox);
@@ -128,7 +168,6 @@ function createPhoneObject(telephoneObject) {
     div.appendChild(creationDateTextBox);
     div.appendChild(modifiedDateTextLabel);
     div.appendChild(modifiedDateTextBox);
-    div.appendChild(editButton);
 
     elementPhoneList.appendChild(div);
 }
@@ -300,7 +339,6 @@ function createAddressesObject(addressObject) {
     div.appendChild(creationDateTextLabel);
     div.appendChild(creationDateTextBox);
     div.appendChild(modifiedDateTextLabel);
-    div.appendChild(modifiedDateTextBox);
     div.appendChild(editButton);
 
     elementAddressesList.appendChild(div);

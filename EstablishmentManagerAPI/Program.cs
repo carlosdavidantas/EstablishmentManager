@@ -181,6 +181,17 @@ app.MapPut("v1/put/telephone/{id}", async (int id, Client_telephone inputTelepho
     return Results.Ok();
 });
 
+app.MapDelete("v1/delete/telephone/{id}", async (int id, AppDbContext context) =>
+{
+    if(await context.Client_Telephones.FindAsync(id) is Client_telephone telephone)
+    {
+        context.Client_Telephones.Remove(telephone);
+        await context.SaveChangesAsync();
+        return Results.Ok();
+    }
+    return Results.NotFound();
+});
+
 //Addresses routes
 //Return every address with a client object.
 app.MapGet("v1/get/addresses", async (AppDbContext context) =>

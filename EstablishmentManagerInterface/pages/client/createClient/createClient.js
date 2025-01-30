@@ -1,5 +1,5 @@
-const API = require("../../../scripts/API.js");
-const postDB = require("../../../scripts/postDB.js");
+const API = require("../../../scripts/server/API.js");
+const postDB = require("../../../scripts/server/postDB.js");
 const { ipcRenderer } = require("electron");
 
 const elementPhoneList = document.getElementById("phonesList");

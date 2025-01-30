@@ -1,5 +1,5 @@
-const postDB = require("../../scripts/postDB.js");
-let API = require("../../scripts/API.js")
+const API = require("../../scripts/server/API.js")
+const postDB = require("../../scripts/server/postDB.js");
 const postLoginURL = `${API.URL}post/login`;
 const loginStatus = document.getElementById("loginStatus");
 const passwordOpenEyeIconPath = "../../icons/openEye.svg";

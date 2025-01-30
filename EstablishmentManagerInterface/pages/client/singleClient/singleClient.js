@@ -1,7 +1,7 @@
-const API = require("../../../scripts/API.js");
-const getDB = require("../../../scripts/getDB.js");
-const putDB = require("../../../scripts/putDB.js");
-const deleteDB = require("../../../scripts/deleteDB.js");
+const API = require("../../../scripts/server/API.js");
+const getDB = require("../../../scripts/server/getDB.js");
+const putDB = require("../../../scripts/server/putDB.js");
+const deleteDB = require("../../../scripts/server/deleteDB.js");
 const { ipcRenderer } = require("electron"); // ipcrenderer is needed to receive the client id from the previous page.
 const formatDate = require("../../../scripts/formatDate.js")
 

@@ -1,41 +1,12 @@
+const { ipcRenderer } = require("electron");
 const API = require("../../../scripts/server/API.js");
-const getDB = require("../../../scripts/server/getDB.js");
-const putDB = require("../../../scripts/server/putDB.js");
 const deleteDB = require("../../../scripts/server/deleteDB.js");
-const { ipcRenderer } = require("electron"); // ipcrenderer is needed to receive the client id from the previous page.
-const formatDate = require("../../../scripts/js/formatDate.js")
+const putDB = require("../../../scripts/server/putDB.js");
+const { dateFormatter } = require("../../../scripts/js/utils.js");
 
 
-const elementPhoneList = document.getElementById("phonesList");
-const elementAddressesList = document.getElementById("addressesList");
-const clientInfosEditButton = document.getElementById("clientInfosEditButton");
-const clientDeleteButton = document.getElementById("clientDeleteButton");
-
-let nameTextBoxElement = document.getElementById("nameText");
-let cpfTextBoxElement = document.getElementById("cpfText");
-let birthdayTextBoxElement = document.getElementById("birthdayText");
-let rgTextBoxElement = document.getElementById("rgText");
-let creationDateTextTextBoxElement = document.getElementById("creationDateText");
-let modifiedDateTextBoxElement = document.getElementById("modifiedDateText");
-let debitTextBoxElement = document.getElementById("debitText");
-let creditTextBoxElement = document.getElementById("creditText");
-
-let specificClientResponse;
-let clientInfos;
-let phonesList;
-let addressesList;
-
-let thisClientId;
-
-ipcRenderer.on("receivedClientId", (event, clientId) => {
-    const specificClientURL = `${API.URL}get/client/${clientId}`;
-    thisClientId = clientId;
-    insertInformationOnScreen(specificClientURL);
-})
-
-
-
-function createPhoneObject(telephoneObject) {
+// This function creates the html element with the client's telephone information filled to be inserted in the telephones list of the page.
+function createPhoneObject(telephoneObject, elementPhoneList) {
     const div = document.createElement("div");
     div.className = "phoneObject";
     div.setAttribute("id", `phoneObjectId-${telephoneObject.client_telephoneId}`);
@@ -73,7 +44,7 @@ function createPhoneObject(telephoneObject) {
 
     const creationDateTextBox = document.createElement("input");
     creationDateTextBox.className = "objectTextBox";
-    creationDateTextBox.value = formatDate.execute(telephoneObject.creation_date);
+    creationDateTextBox.value = dateFormatter(telephoneObject.creation_date);
     creationDateTextBox.disabled = true;
 
     const modifiedDateTextLabel = document.createElement("label");
@@ -82,7 +53,7 @@ function createPhoneObject(telephoneObject) {
     
     const modifiedDateTextBox = document.createElement("input");
     modifiedDateTextBox.className = "objectTextBox";
-    modifiedDateTextBox.value = formatDate.execute(telephoneObject.modified_date);
+    modifiedDateTextBox.value = dateFormatter(telephoneObject.modified_date);
     modifiedDateTextBox.disabled = true;
     modifiedDateTextBox.setAttribute("id", `modifiedDateTextBox-${telephoneObject.client_telephoneId}`);
 
@@ -172,7 +143,8 @@ function createPhoneObject(telephoneObject) {
     elementPhoneList.appendChild(div);
 }
 
-function createAddressesObject(addressObject) {
+// This function creates the html element with the client's address information filled to be inserted into the addresses list of the page. 
+function createAddressesObject(addressObject, elementAddressesList) {
     const div = document.createElement("div");
     div.className = "addressObject";
     div.setAttribute("id", `addressObjectId-${addressObject.client_addressId}`);
@@ -255,7 +227,7 @@ function createAddressesObject(addressObject) {
 
     const creationDateTextBox = document.createElement("input");
     creationDateTextBox.className = "objectTextBox";
-    creationDateTextBox.value = formatDate.execute(addressObject.creation_date);
+    creationDateTextBox.value = dateFormatter(addressObject.creation_date);
     creationDateTextBox.disabled = true;
 
     const modifiedDateTextLabel = document.createElement("label");
@@ -264,7 +236,7 @@ function createAddressesObject(addressObject) {
 
     const modifiedDateTextBox = document.createElement("input");
     modifiedDateTextBox.className = "objectTextBox";
-    modifiedDateTextBox.value = formatDate.execute(addressObject.modified_date);
+    modifiedDateTextBox.value = dateFormatter(addressObject.modified_date);
     modifiedDateTextBox.disabled = true;
 
     const editButton = document.createElement("button");
@@ -344,171 +316,7 @@ function createAddressesObject(addressObject) {
     elementAddressesList.appendChild(div);
 }
 
-function insertClientBasicInfomation(client) {
-    nameTextBoxElement.value = client.name;
-    cpfTextBoxElement.value = client.cpf;
-    birthdayTextBoxElement.value = formatDate.execute(client.birthday);
-    rgTextBoxElement.value = client.rg;
-    creationDateTextTextBoxElement.value = formatDate.execute(client.creation_date);
-    modifiedDateTextBoxElement.value = formatDate.execute(client.modified_date);
-    debitTextBoxElement.value = client.debit_on_establishment;
-    creditTextBoxElement.value = client.credit_on_establishment;
+module.exports = {
+    createPhoneObject,
+    createAddressesObject
 }
-
-async function insertInformationOnScreen(specificClientURL) {
-    specificClientResponse = await getDB.execute(specificClientURL);
-    clientInfos = specificClientResponse[1][0];
-    insertClientBasicInfomation(clientInfos);
-
-    phonesList = specificClientResponse[1][0].client_telephones;
-    phonesList.forEach((telephone) => {
-        createPhoneObject(telephone)
-    });
-
-    addressesList = specificClientResponse[1][0].client_addresses;
-    addressesList.forEach((address) => {
-        createAddressesObject(address);
-    });
-}
-
-function clientFieldsDisabled (boolValue) {
-    nameTextBoxElement.disabled = boolValue;
-    cpfTextBoxElement.disabled = boolValue;
-    birthdayTextBoxElement.disabled = boolValue;
-    rgTextBoxElement.disabled = boolValue;
-    debitTextBoxElement.disabled = boolValue;
-    creditTextBoxElement.disabled = boolValue;
-}
-
-birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that verificates and formats data sent by user.
-    let value = e.target.value.replace(/\D/g, '');
-    
-    if(value.length > 2) {
-        let day = parseInt(value.slice(0,2), 10);
-        if(day > 31){
-            value = "31";
-        }else {
-            value = value.slice(0,2) + "/" + value.slice(2);
-        }
-    }
-
-    if(value.length > 5){
-        let month = parseInt(value.slice(3, 5), 10);
-        if (month > 12) {
-            value = value.slice(0, 2) + "/12";
-        } else {
-            value = value.slice(0, 5) + "/" + value.slice(5);
-        }
-    }
-    if(value.length >= 10){
-        let year = parseInt(value.slice(6,10));
-        let actualYear = new Date().getFullYear();
-        if(year > actualYear){
-            value = value.slice(0, 6) + `${actualYear}`;
-        }
-    }
-    
-    e.target.value = value;
-});
-
-cpfTextBoxElement.addEventListener("input", function(e) {  // Function that formats data sent by user.
-    let value = e.target.value.replace(/\D/g, '');
-    
-    if(value.length > 3) {
-        value = value.slice(0,3) + "." + value.slice(3);
-    }
-
-    if(value.length > 7){
-        value = value.slice(0, 7) + "." + value.slice(7);
-    }
-    if(value.length > 11){
-        value = value.slice(0, 11) + "-" + value.slice(11);
-    }
-    
-    e.target.value = value;
-});
-
-rgTextBoxElement.addEventListener("input", function(e) {  // Function that formats data sent by user.
-    let value = e.target.value.replace(/\D/g, '');
-    
-    if(value.length > 2) {
-        value = value.slice(0,2) + "." + value.slice(2);
-    }
-
-    if(value.length > 6){
-        value = value.slice(0, 6) + "." + value.slice(6);
-    }
-    if(value.length > 10){
-        value = value.slice(0, 10) + "-" + value.slice(10);
-    }
-    
-    e.target.value = value;
-});
-
-clientInfosEditButton.addEventListener("click", () => {
-    if(clientInfosEditButton.innerHTML === "Edit") {
-        clientInfosEditButton.innerText = "Save";
-        clientFieldsDisabled(false);
-        return;
-    }
-
-    if(clientInfosEditButton.innerHTML === "Save") {
-        const date = birthdayTextBoxElement.value;
-        const day = date.slice(0, 2);
-        const month = date.slice(3, 5);
-        const year = date.slice(6, 10);
-        const newDate = `${year}-${month}-${day}`
-        try {
-            let newClient = {
-                birthday: newDate,
-                cpf: cpfTextBoxElement.value,
-                credit_on_establishment: creditTextBoxElement.value,
-                debit_on_establishment: debitTextBoxElement.value,
-                name: nameTextBoxElement.value,
-                rg: rgTextBoxElement.value
-            }
-
-            console.log(newClient);
-            const success = putDB.execute(`${API.URL}put/client/${thisClientId}`, newClient);
-            success.then((success) => {
-                if(success == true) {
-                    
-                }else {
-                    alert("Error while updating client!");
-                    window.close();
-                }
-            });
-            
-        }
-        catch(error) {
-            console.log("ERROR Occurred - " + error);
-        }
-
-        clientInfosEditButton.innerText = "Edit";
-        clientFieldsDisabled(true);
-        setTimeout(() => {
-            ipcRenderer.send("updateAllClients");
-        }, 100);
-    }
-});
-
-function deleteClient() {
-    deleteDB.execute(`${API.URL}delete/client/${thisClientId}`);
-    setTimeout(() => {
-        ipcRenderer.send("updateAllClients");
-    }, 100);
-}
-
-clientDeleteButton.addEventListener("click", async () => {
-    const response = await ipcRenderer.invoke("showClientDeleteDialog");
-    if (response ===  0) {
-        // User clicked Yes
-        deleteClient();
-        setTimeout(() => {
-            window.close();
-        }, 100);
-    } else {
-        // Do nothing
-    }
-});
-

@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="../../../scripts/globalCssStyles/reset.css" />
-    <link rel="stylesheet" href="singleClient.css" />
+    <link rel="stylesheet" href="stylesSingleClient.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://localhost:5000" />
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self' http://localhost:5000" />
@@ -15,21 +15,21 @@
         <button class="editButton" id="clientInfosEditButton">Edit</button>
         <section class="infosSpace">
             <label class="textLabel">Name:</label>
-            <input type="text" disabled="true" class="textBox" id="nameText" maxlength="100"></input>
+            <input type="text" disabled="true" class="textBox" id="name" maxlength="100"></input>
             <label class="textLabel">CPF:</label>
-            <input type="text" disabled="true" class="textBox" id="cpfText" maxlength="14" placeholder="000.000.000-00"></label>
+            <input type="text" disabled="true" class="textBox" id="cpf" maxlength="14" placeholder="000.000.000-00"></label>
             <label class="textLabel">Birthday:</label>
-            <input type="text" disabled="true" class="textBox" id="birthdayText" maxlength="10" placeholder="dd/mm/aaaa"></input>
+            <input type="text" disabled="true" class="textBox" id="birthday" maxlength="10" placeholder="dd/mm/aaaa"></input>
             <label class="textLabel">RG:</label>
-            <input type="text" disabled="true" class="textBox" id="rgText" maxlength="13" placeholder="00.000.000-00"></input>
+            <input type="text" disabled="true" class="textBox" id="rg" maxlength="13" placeholder="00.000.000-00"></input>
             <label class="textLabel">Creation date:</label>
-            <input type="text" disabled="true" class="textBox" id="creationDateText"></input>
+            <input type="text" disabled="true" class="textBox" id="creation_date"></input>
             <label class="textLabel">Modified date:</label>
-            <input type="text" disabled="true" class="textBox" id="modifiedDateText"></input>
+            <input type="text" disabled="true" class="textBox" id="modified_date"></input>
             <label class="textLabel">Debit:</label>
-            <input type="text" disabled="true" class="textBox" id="debitText"></input>
+            <input type="text" disabled="true" class="textBox" id="debit_on_establishment"></input>
             <label class="textLabel">Credit:</label>
-            <input type="text" disabled="true" class="textBox" id="creditText"></input>
+            <input type="text" disabled="true" class="textBox" id="credit_on_establishment"></input>
         </section>
         <section class="phoneSpace">
             <label class="textLabel">Phone numbers:</label>
@@ -41,7 +41,9 @@
         </section>
         <button class="bottomDeleteButton" id="clientDeleteButton">Delete</button>
     </section>
-    <script src="singleClient.js" type="module"></script>
+    <script src="createHtmlElements.js" type="module"></script>
+    <script src="infoInsertersOnTheScreen.js" type="module"></script>
+    <script src="mainSingleClient.js" type="module"></script>
 </body>
 
 </html>

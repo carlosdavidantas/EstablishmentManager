@@ -3,7 +3,7 @@ const getDB = require("../../../scripts/server/getDB.js");
 const putDB = require("../../../scripts/server/putDB.js");
 const deleteDB = require("../../../scripts/server/deleteDB.js");
 const { ipcRenderer } = require("electron"); // ipcrenderer is needed to receive the client id from the previous page.
-const formatDate = require("../../../scripts/formatDate.js")
+const formatDate = require("../../../scripts/js/formatDate.js")
 
 
 const elementPhoneList = document.getElementById("phonesList");

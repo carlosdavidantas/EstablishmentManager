@@ -2,7 +2,7 @@
   "name": "establishment_manager_interface",
   "version": "1.0.0",
   "description": "The interface of the establishment manager",
-  "main": "scripts\\main.js",
+  "main": "scripts\\mainElectron.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"

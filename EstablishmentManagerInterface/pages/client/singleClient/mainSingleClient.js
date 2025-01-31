@@ -3,9 +3,10 @@ const getDB = require("../../../scripts/server/getDB.js");
 const putDB = require("../../../scripts/server/putDB.js");
 const deleteDB = require("../../../scripts/server/deleteDB.js");
 const { ipcRenderer } = require("electron"); // ipcrenderer is needed to receive the client id from the previous page.
-const { dateFormatter } = require("../../../scripts/js/utils.js");
+const { dateFormatter, birthdayTypingMask } = require("../../../scripts/js/utils.js");
 const { createPhoneObject, createAddressesObject } = require("./createHtmlElements.js");
 const { insertClientBasicInfomation, clientFieldsDisabled } = require("./infoInsertersOnTheScreen.js");
+
 
 const clientRoute = `${API.URL}get/client/`;
 
@@ -76,33 +77,7 @@ function deleteClient() {
 
 
 birthdayTextBoxElement.addEventListener("input", function(e) {  // Function that verificates and formats data sent by user.
-    let value = e.target.value.replace(/\D/g, '');
-    
-    if(value.length > 2) {
-        let day = parseInt(value.slice(0,2), 10);
-        if(day > 31){
-            value = "31";
-        }else {
-            value = value.slice(0,2) + "/" + value.slice(2);
-        }
-    }
-
-    if(value.length > 5){
-        let month = parseInt(value.slice(3, 5), 10);
-        if (month > 12) {
-            value = value.slice(0, 2) + "/12";
-        } else {
-            value = value.slice(0, 5) + "/" + value.slice(5);
-        }
-    }
-    if(value.length >= 10){
-        let year = parseInt(value.slice(6,10));
-        let actualYear = new Date().getFullYear();
-        if(year > actualYear){
-            value = value.slice(0, 6) + `${actualYear}`;
-        }
-    }
-    
+    value = birthdayTypingMask(e);
     e.target.value = value;
 });
 

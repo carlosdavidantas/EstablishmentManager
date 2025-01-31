@@ -51,8 +51,25 @@ function cpfTypingMask(inputParameter) {
     return value;
 }
 
+function rgTypingMask(inputParameter){
+    let value = inputParameter.target.value.replace(/\D/g, '');
+    
+    if(value.length > 2) {
+        value = value.slice(0,2) + "." + value.slice(2);
+    }
+
+    if(value.length > 6){
+        value = value.slice(0, 6) + "." + value.slice(6);
+    }
+    if(value.length > 10){
+        value = value.slice(0, 10) + "-" + value.slice(10);
+    }
+    return value;
+}
+
 module.exports = {
     dateFormatter,
     birthdayTypingMask,
-    cpfTypingMask
+    cpfTypingMask,
+    rgTypingMask
 };

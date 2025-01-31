@@ -3,7 +3,7 @@ const getDB = require("../../../scripts/server/getDB.js");
 const putDB = require("../../../scripts/server/putDB.js");
 const deleteDB = require("../../../scripts/server/deleteDB.js");
 const { ipcRenderer } = require("electron"); // ipcrenderer is needed to receive the client id from the previous page.
-const { dateFormatter, birthdayTypingMask, cpfTypingMask } = require("../../../scripts/js/utils.js");
+const { dateFormatter, birthdayTypingMask, cpfTypingMask, rgTypingMask } = require("../../../scripts/js/utils.js");
 const { createPhoneObject, createAddressesObject } = require("./createHtmlElements.js");
 const { insertClientBasicInfomation, clientFieldsDisabled } = require("./infoInsertersOnTheScreen.js");
 
@@ -87,19 +87,7 @@ cpfTextBoxElement.addEventListener("input", function(e) {  // Function that form
 });
 
 rgTextBoxElement.addEventListener("input", function(e) {  // Function that formats data sent by user.
-    let value = e.target.value.replace(/\D/g, '');
-    
-    if(value.length > 2) {
-        value = value.slice(0,2) + "." + value.slice(2);
-    }
-
-    if(value.length > 6){
-        value = value.slice(0, 6) + "." + value.slice(6);
-    }
-    if(value.length > 10){
-        value = value.slice(0, 10) + "-" + value.slice(10);
-    }
-    
+    let value = rgTypingMask(e);
     e.target.value = value;
 });
 
